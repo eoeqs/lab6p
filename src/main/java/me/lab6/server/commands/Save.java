@@ -2,7 +2,7 @@ package me.lab6.server.commands;
 
 
 
-import me.lab6.common.utility.DataLimitations;
+import me.lab6.common.utility.Limitations;
 import me.lab6.server.managers.CollectionManager;
 import me.lab6.server.managers.FileManager;
 
@@ -73,7 +73,7 @@ public class Save implements Command {
      * @return the argument limitations for the command
      */
     @Override
-    public Object[] argLimitations() {
-        return new DataLimitations().limitations();
+    public Limitations argLimitations() {
+        return new Limitations();
     }
 }

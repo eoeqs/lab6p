@@ -2,8 +2,8 @@ plugins {
     id 'java'
 }
 
-group 'five.laba.tgeoeqs'
-version '1.0-SNAPSHOT'
+group 'me.lab6'
+version 'FIN'
 
 repositories {
     mavenCentral()
@@ -21,13 +21,40 @@ test {
     useJUnitPlatform()
 }
 
-jar {
-    manifest {
-        attributes(
-                'Main-Class': 'App'
-        )
-    }
+tasks.register('serverJar', Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from(sourceSets.main.output) { include "**" }
     from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
     }
+    manifest {
+        attributes 'Main-Class': 'me.lab6.server.ServerMain'
+    }
+    destinationDirectory = file("$rootDir/jar/server")
+    archivesBaseName = "lab6"
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+}
+
+tasks.register('clientJar', Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from(sourceSets.main.output) { include "**" }
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    manifest {
+        attributes 'Main-Class': 'me.lab6.client.ClientMain'
+    }
+    destinationDirectory = file("$rootDir/jar/client")
+    archivesBaseName = "lab6"
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }

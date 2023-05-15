@@ -1,7 +1,7 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.utility.DataLimitations;
+import me.lab6.common.utility.Limitations;
 import me.lab6.common.workerRelated.Worker;
 import me.lab6.server.managers.CollectionManager;
 
@@ -67,7 +67,7 @@ public class Show implements Command {
      * @return the limitations of the argument as an Object array.
      */
     @Override
-    public Object[] argLimitations() {
-        return new DataLimitations().limitations();
+    public Limitations argLimitations() {
+        return new Limitations();
     }
 }

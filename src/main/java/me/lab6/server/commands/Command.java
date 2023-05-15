@@ -2,6 +2,7 @@ package me.lab6.server.commands;
 
 
 import me.lab6.common.exceptions.ExitException;
+import me.lab6.common.utility.Limitations;
 
 /**
  * The Command interface represents a command that can be executed.
@@ -32,5 +33,5 @@ public interface Command {
     /**
      * @return an array of DataLimitations objects
      */
-    Object[] argLimitations();
+    Limitations argLimitations();
 }

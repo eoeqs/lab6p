@@ -11,13 +11,11 @@ import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Server {
+public class ServerMain {
     private final static int PORT = 26566;
 
     public static void main(String[] args) {

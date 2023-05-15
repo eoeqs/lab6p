@@ -1,7 +1,7 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.utility.DataLimitations;
+import me.lab6.common.utility.Limitations;
 import me.lab6.server.managers.CollectionManager;
 
 /**
@@ -59,10 +59,11 @@ public class Info implements Command {
     /**
      * Returns an empty array of object limitations.
      * The {@code Info} command doesn't have any limitations, so it returns an empty array.
+     *
      * @return an empty array
      */
     @Override
-    public Object[] argLimitations() {
-        return new DataLimitations().limitations();
+    public Limitations argLimitations() {
+        return new Limitations();
     }
 }

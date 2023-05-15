@@ -1,11 +1,10 @@
-package me.lab6.common.utility;
+package me.lab6.server.json;
 
 import com.google.gson.*;
-import me.lab6.client.DataManager;
 import me.lab6.common.exceptions.IncorrectWorkerFieldException;
+import me.lab6.common.utility.DataType;
 import me.lab6.common.workerRelated.Address;
 import me.lab6.common.workerRelated.Organization;
-
 
 import java.lang.reflect.Type;
 
@@ -27,23 +26,23 @@ public class OrganizationDeserializer implements JsonDeserializer<Organization> 
     public Organization deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
 
-        DataManager.ensureHas(jsonObject, "org_name");
+        JsonValidator.ensureHas(jsonObject, "org_name");
         if (jsonObject.get("org_name").getAsString().isBlank()) {
             throw new IncorrectWorkerFieldException();
         }
         String orgName = jsonObject.get("org_name").getAsString();
 
-        DataManager.ensureHas(jsonObject, "annual_turnover");
+        JsonValidator.ensureHas(jsonObject, "annual_turnover");
         String preTurnover = jsonObject.get("annual_turnover").getAsString();
-        DataManager.ensureCorrect(DataType.INT, false, true, preTurnover);
+        JsonValidator.ensureCorrect(DataType.INT, false, true, preTurnover);
         int turnover = Integer.parseInt(preTurnover);
 
-        DataManager.ensureHas(jsonObject, "employee_count");
+        JsonValidator.ensureHas(jsonObject, "employee_count");
         String preEmpCount = jsonObject.get("employee_count").getAsString();
-        DataManager.ensureCorrect(DataType.LONG, false, true, preEmpCount);
+        JsonValidator.ensureCorrect(DataType.LONG, false, true, preEmpCount);
         long empCount = Long.parseLong(preEmpCount);
 
-        DataManager.ensureHas(jsonObject, "address");
+        JsonValidator.ensureHas(jsonObject, "address");
         Address address = context.deserialize(jsonObject.get("address"), Address.class);
 
         return new Organization(orgName, turnover, empCount, address);

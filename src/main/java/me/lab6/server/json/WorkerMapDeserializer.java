@@ -1,8 +1,7 @@
-package me.lab6.common.utility;
+package me.lab6.server.json;
 
 import com.google.gson.*;
 import me.lab6.common.workerRelated.Worker;
-
 
 import java.lang.reflect.Type;
 import java.util.Map;

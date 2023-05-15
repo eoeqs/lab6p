@@ -1,7 +1,7 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.utility.DataLimitations;
+import me.lab6.common.utility.Limitations;
 
 import java.util.ArrayList;
 
@@ -69,7 +69,7 @@ public class Help implements Command {
      * @return the data limitations for the command (none in this case).
      */
     @Override
-    public Object[] argLimitations() {
-        return new DataLimitations().limitations();
+    public Limitations argLimitations() {
+        return new Limitations();
     }
 }

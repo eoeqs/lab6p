@@ -2,7 +2,7 @@ package me.lab6.server.commands;
 
 
 import me.lab6.common.exceptions.ExitException;
-import me.lab6.common.utility.DataLimitations;
+import me.lab6.common.utility.Limitations;
 
 /**
  * A command that stops the application without saving.
@@ -51,7 +51,7 @@ public class Exit implements Command {
      * @return an array of DataLimitations objects (in this case, an empty array as no arguments are required)
      */
     @Override
-    public Object[] argLimitations() {
-        return new DataLimitations().limitations();
+    public Limitations argLimitations() {
+        return new Limitations();
     }
 }

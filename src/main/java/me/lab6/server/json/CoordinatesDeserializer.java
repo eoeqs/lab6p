@@ -1,9 +1,8 @@
-package me.lab6.common.utility;
+package me.lab6.server.json;
 
 import com.google.gson.*;
-import me.lab6.client.DataManager;
+import me.lab6.common.utility.DataType;
 import me.lab6.common.workerRelated.Coordinates;
-
 
 import java.lang.reflect.Type;
 
@@ -27,13 +26,13 @@ public class CoordinatesDeserializer implements JsonDeserializer<Coordinates> {
         double coordinateX = 0.0;
         if (jsonObject.has("x")) {
             String preCoordinateX = jsonObject.get("x").getAsString();
-            DataManager.ensureCorrect(DataType.DOUBLE, false, false, preCoordinateX);
+            JsonValidator.ensureCorrect(DataType.DOUBLE, false, false, preCoordinateX);
             coordinateX = Double.parseDouble(preCoordinateX);
         }
 
-        DataManager.ensureHas(jsonObject, "y");
+        JsonValidator.ensureHas(jsonObject, "y");
         String preCoordinateY = jsonObject.get("y").getAsString();
-        DataManager.ensureCorrect(DataType.DOUBLE, false, false, preCoordinateY);
+        JsonValidator.ensureCorrect(DataType.DOUBLE, false, false, preCoordinateY);
         Double coordinateY = Double.parseDouble(preCoordinateY);
 
         return new Coordinates(coordinateX, coordinateY);

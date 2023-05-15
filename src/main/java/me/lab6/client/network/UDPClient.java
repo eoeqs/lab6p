@@ -1,4 +1,4 @@
-package me.lab6.client;
+package me.lab6.client.network;
 
 import me.lab6.common.Encoder;
 import me.lab6.common.Request;
@@ -8,7 +8,6 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
-import java.util.Arrays;
 
 public class UDPClient {
     private final DatagramChannel client;

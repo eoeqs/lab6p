@@ -1,7 +1,7 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.utility.DataLimitations;
+import me.lab6.common.utility.Limitations;
 import me.lab6.server.managers.CollectionManager;
 
 /**
@@ -62,7 +62,7 @@ public class Clear implements Command {
      * @return an array of DataLimitations objects
      */
     @Override
-    public Object[] argLimitations() {
-        return new DataLimitations().limitations();
+    public Limitations argLimitations() {
+        return new Limitations();
     }
 }

@@ -1,4 +1,4 @@
-package me.lab6.common.utility;
+package me.lab6.server.json;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -6,15 +6,14 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import me.lab6.common.workerRelated.Worker;
 
-
 import java.lang.reflect.Type;
 
 /**
- * Serializer class for converting a {@link workerRelated.Worker} object to a JSON object using the Gson library.
+ * Serializer class for converting a {@link Worker} object to a JSON object using the Gson library.
  */
 public class WorkerSerializer implements JsonSerializer<Worker> {
     /**
-     * Serializes a given {@link workerRelated.Worker} object to a JSON object using the Gson library.
+     * Serializes a given {@link Worker} object to a JSON object using the Gson library.
      *
      * @param src The worker object to be serialized.
      * @param srcType The type of the worker object.

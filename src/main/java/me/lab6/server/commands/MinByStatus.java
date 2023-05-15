@@ -1,7 +1,7 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.utility.DataLimitations;
+import me.lab6.common.utility.Limitations;
 import me.lab6.common.workerRelated.Status;
 import me.lab6.common.workerRelated.Worker;
 import me.lab6.server.managers.CollectionManager;
@@ -68,10 +68,11 @@ public class MinByStatus implements Command {
     }
     /**
      * Returns the description of the MinByStatus command for help.
+     *
      * @return the description of the command as a string
      */
     @Override
-    public Object[] argLimitations() {
-        return new DataLimitations().limitations();
+    public Limitations argLimitations() {
+        return new Limitations();
     }
 }

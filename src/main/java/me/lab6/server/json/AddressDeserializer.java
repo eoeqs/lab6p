@@ -1,10 +1,8 @@
-package me.lab6.common.utility;
+package me.lab6.server.json;
 
 import com.google.gson.*;
-import me.lab6.client.DataManager;
 import me.lab6.common.exceptions.IncorrectWorkerFieldException;
 import me.lab6.common.workerRelated.Address;
-
 
 import java.lang.reflect.Type;
 
@@ -26,7 +24,7 @@ public class AddressDeserializer implements JsonDeserializer<Address> {
 
         JsonObject jsonObject = json.getAsJsonObject();
 
-        DataManager.ensureHas(jsonObject, "zipCode");
+        JsonValidator.ensureHas(jsonObject, "zipCode");
         if (jsonObject.get("zipCode").getAsString().isBlank()) {
             throw new IncorrectWorkerFieldException();
         }

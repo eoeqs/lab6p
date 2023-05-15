@@ -2,7 +2,7 @@ package me.lab6.server.commands;
 
 
 
-import me.lab6.common.utility.DataLimitations;
+import me.lab6.common.utility.Limitations;
 
 import java.util.ArrayList;
 
@@ -70,7 +70,7 @@ public class History implements Command {
      * @return an empty array
      */
     @Override
-    public Object[] argLimitations() {
-        return new DataLimitations().limitations();
+    public Limitations argLimitations() {
+        return new Limitations();
     }
 }

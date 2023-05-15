@@ -13,7 +13,7 @@ import java.nio.ByteBuffer;
 public class UDPDatagramServer {
     private final InetSocketAddress addr;
     private ServerConsole serverConsole;
-private byte[] buffer;
+    private byte[] buffer;
     private final DatagramSocket datagramSocket;
 
 
