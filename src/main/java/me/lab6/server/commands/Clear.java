@@ -1,7 +1,6 @@
-package commands;
+package me.lab6.server.commands;
 
 import managers.CollectionManager;
-import utilities.DataLimitations;
 
 /**
  * The Clear class represents a command that clears the WorkerMap collection.
@@ -62,6 +61,7 @@ public class Clear implements Command {
      */
     @Override
     public Object[] argLimitations() {
-        return new DataLimitations().limitations();
+        //return new DataLimitations().limitations();
+        return null;
     }
 }

@@ -1,2 +1,4 @@
-package me.lab6.client;public class ValidationChecker {
+package me.lab6.client;
+
+public class ValidationChecker {
 }

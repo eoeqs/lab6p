@@ -1,9 +1,8 @@
-package utilities;
+package me.lab6.common.utility.json;
 
 import com.google.gson.*;
-import exceptions.IncorrectWorkerFieldException;
-import managers.DataManager;
-import workerRelated.*;
+import me.lab6.common.exceptions.*;
+import me.lab6.common.workerRelated.*;
 
 import java.lang.reflect.Type;
 import java.time.LocalDate;
@@ -29,20 +28,20 @@ public class WorkerDeserializer implements JsonDeserializer<Worker> {
     public Worker deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
 
-        DataManager.ensureHas(jsonObject, "name");
+        //DataManager.ensureHas(jsonObject, "name");
         if (jsonObject.get("name").getAsString().isBlank()) {
             throw new IncorrectWorkerFieldException();
         }
         String name = jsonObject.get("name").getAsString();
 
-        DataManager.ensureHas(jsonObject, "ID");
+        //DataManager.ensureHas(jsonObject, "ID");
         String preId = jsonObject.get("ID").getAsString();
-        DataManager.ensureCorrect(DataType.LONG, false, false, preId);
+        //DataManager.ensureCorrect(DataType.LONG, false, false, preId);
         long id = Long.parseLong(preId);
 
         Position position = null;
         if (jsonObject.has("position")) {
-            DataManager.ensureCorrect(DataType.POSITION, true, false, jsonObject.get("position").getAsString());
+            //DataManager.ensureCorrect(DataType.POSITION, true, false, jsonObject.get("position").getAsString());
             if (!jsonObject.get("position").getAsString().isBlank()) {
                 position = Position.valueOf(jsonObject.get("position").getAsString().toUpperCase());
             }
@@ -50,31 +49,31 @@ public class WorkerDeserializer implements JsonDeserializer<Worker> {
 
         Status status = null;
         if (jsonObject.has("status")) {
-            DataManager.ensureCorrect(DataType.STATUS, true, false, jsonObject.get("status").getAsString());
+            //DataManager.ensureCorrect(DataType.STATUS, true, false, jsonObject.get("status").getAsString());
             if (!jsonObject.get("status").getAsString().isBlank()) {
                 status = Status.valueOf(jsonObject.get("status").getAsString().toUpperCase());
             }
         }
 
-        DataManager.ensureHas(jsonObject, "salary");
+        //DataManager.ensureHas(jsonObject, "salary");
         String preSalary = jsonObject.get("salary").getAsString();
-        DataManager.ensureCorrect(DataType.INT, false, true, preSalary);
+        //DataManager.ensureCorrect(DataType.INT, false, true, preSalary);
         int salary = Integer.parseInt(preSalary);
 
-        DataManager.ensureHas(jsonObject, "creation_date");
+        //DataManager.ensureHas(jsonObject, "creation_date");
         String preCreationDate = jsonObject.get("creation_date").getAsString();
-        DataManager.ensureCorrect(DataType.DATE, false, false, preCreationDate);
+        //DataManager.ensureCorrect(DataType.DATE, false, false, preCreationDate);
         LocalDate creationDate = LocalDate.parse(preCreationDate);
 
-        DataManager.ensureHas(jsonObject, "start_date");
+        //DataManager.ensureHas(jsonObject, "start_date");
         String preStartDate = jsonObject.get("start_date").getAsString();
-        DataManager.ensureCorrect(DataType.DATE, false, false, preStartDate);
+        //DataManager.ensureCorrect(DataType.DATE, false, false, preStartDate);
         LocalDate startDate = LocalDate.parse(preStartDate);
-        if (creationDate.compareTo(startDate) > 0) {
+        if (creationDate.isAfter(startDate)) {
             throw new IncorrectWorkerFieldException();
         }
 
-        DataManager.ensureHas(jsonObject, "coordinates");
+        //DataManager.ensureHas(jsonObject, "coordinates");
         Coordinates coordinates = context.deserialize(jsonObject.get("coordinates"), Coordinates.class);
 
         Organization organization = null;

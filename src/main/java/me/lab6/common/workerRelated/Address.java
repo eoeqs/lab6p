@@ -1,4 +1,4 @@
-package workerRelated;
+package me.lab6.common.workerRelated;
 
 /**
  * Represents an address with a street and a zip code.

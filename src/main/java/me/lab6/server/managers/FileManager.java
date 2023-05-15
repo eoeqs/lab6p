@@ -1,12 +1,9 @@
-package managers;
+package me.lab6.server.managers;
 
 import com.google.gson.*;
-import exceptions.SameIDException;
-import utilities.*;
-import workerRelated.Address;
-import workerRelated.Coordinates;
-import workerRelated.Organization;
-import workerRelated.Worker;
+import me.lab6.common.exceptions.SameIDException;
+import me.lab6.common.utility.json.*;
+import me.lab6.common.workerRelated.*;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

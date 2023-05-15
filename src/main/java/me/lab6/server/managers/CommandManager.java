@@ -1,7 +1,7 @@
-package managers;
+package me.lab6.server.managers;
 
-import commands.*;
-import exceptions.ExitException;
+import me.lab6.server.commands.*;
+import me.lab6.common.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

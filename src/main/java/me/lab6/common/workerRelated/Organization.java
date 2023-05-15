@@ -1,4 +1,4 @@
-package workerRelated;
+package me.lab6.common.workerRelated;
 
 /**
  * Represents an organization with a full name, annual turnover, employees count, and postal address.

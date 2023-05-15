@@ -1,4 +1,4 @@
-package workerRelated;
+package me.lab6.common.workerRelated;
 
 /**
  * The Position enum class defines the possible positions that a worker can hold. These positions include Head of

@@ -1,4 +1,4 @@
-package commands;
+package me.lab6.server.commands;
 
 import managers.CollectionManager;
 import managers.UserInteractionManager;

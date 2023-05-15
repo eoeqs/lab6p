@@ -1,4 +1,4 @@
 package me.lab6.client;
 
-public class Console {
+public class ClientMain {
 }

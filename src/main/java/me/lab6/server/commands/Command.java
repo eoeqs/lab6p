@@ -1,6 +1,6 @@
-package commands;
+package me.lab6.server.commands;
 
-import exceptions.ExitException;
+import me.lab6.common.exceptions.ExitException;
 
 /**
  * The Command interface represents a command that can be executed.

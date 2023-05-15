@@ -1,10 +1,10 @@
-package utilities;
+package me.lab6.common.utility.json;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import workerRelated.Worker;
+import me.lab6.common.workerRelated.Worker;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ public class WorkerMapSerializer implements JsonSerializer<HashMap<Long, Worker>
     public JsonElement serialize(HashMap<Long, Worker> src, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject result = new JsonObject();
         for (Worker w : src.values()) {
-            result.add(w.getId() + "", context.serialize(w));
+            result.add(String.valueOf(w.getId()), context.serialize(w));
         }
         return result;
     }

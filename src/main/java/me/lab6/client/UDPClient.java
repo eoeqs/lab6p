@@ -1,2 +1,4 @@
-package me.lab6.client;public class UDPClient {
+package me.lab6.client;
+
+public class UDPClient {
 }

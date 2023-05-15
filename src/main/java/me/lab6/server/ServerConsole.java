@@ -1,2 +1,4 @@
-package me.lab6.server;public class ServerConsole {
+package me.lab6.server;
+
+public class ServerConsole {
 }

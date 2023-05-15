@@ -1,6 +1,6 @@
-package managers;
+package me.lab6.server.managers;
 
-import workerRelated.*;
+import me.lab6.common.workerRelated.*;
 
 import java.time.LocalDate;
 import java.util.HashMap;

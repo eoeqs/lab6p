@@ -1,7 +1,7 @@
-package utilities;
+package me.lab6.common.utility.json;
 
 import com.google.gson.*;
-import workerRelated.Coordinates;
+import me.lab6.common.workerRelated.Coordinates;
 
 import java.lang.reflect.Type;
 

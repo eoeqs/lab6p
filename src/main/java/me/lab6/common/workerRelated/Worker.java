@@ -1,4 +1,4 @@
-package workerRelated;
+package me.lab6.common.workerRelated;
 
 import org.jetbrains.annotations.NotNull;
 
