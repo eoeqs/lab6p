@@ -48,22 +48,27 @@ public class Validator {
                 Messages.noInput("execute_script", "a file path")));
     }
 
-    public static boolean validateCommandAndArg(String[] input) {
+    public static String validateCommandAndArg(String[] input) {
         String commandStr = input[0];
         int existence = validateCommand(commandStr);
         if (existence == 0) {
-            System.out.println("Non-existent command. Please, use 'help' to see information about available commands.");
-            return false;
+            return "Non-existent command. Please, use 'help' to see information about available commands.";
         }
         if (existence > 0) {
             Limitations limitations = commandsWithArg.get(commandStr);
             if (input.length == 1) {
-                System.out.println(limitations.getNoInputMessage());
-                return false;
+                return limitations.getNoInputMessage();
             }
-            return (validateArg(input[1], limitations));
+            switch (validateData(input[1], limitations)) {
+                case 5 -> {
+                    return limitations.getNoInputMessage();
+                }
+                case 10 -> {
+                    return limitations.getWrongTypeMessage();
+                }
+            }
         }
-        return true;
+        return null;
     }
 
     private static int validateCommand(String str) {
@@ -76,15 +81,17 @@ public class Validator {
         return 0;
     }
 
-    private static boolean validateArg(String argStr, Limitations limitations) {
-        if (!validateData(argStr, limitations) || !positiveCheck(argStr, limitations.isPositive())) {
-            System.out.println(limitations.getWrongTypeMessage());
-            return false;
+    public static int validateData(String str, Limitations limitations) {
+        if (!nullCheck(str, limitations)) {
+            return 5;
         }
-        return true;
+        if (!typeCheck(str, limitations) || !positiveCheck(str, limitations)) {
+            return 10;
+        }
+        return 0;
     }
 
-    public static boolean validateData(String data, Limitations limitations) {
+    private static boolean typeCheck(String data, Limitations limitations) {
         switch (limitations.getDataType()) {
             case LONG -> {
                 return checkLong(data);
@@ -116,11 +123,22 @@ public class Validator {
         }
     }
 
-    private static boolean positiveCheck(String number, boolean positive) {
+    private static boolean positiveCheck(String number, Limitations limitations) {
+        boolean positive = limitations.isPositive();
         if (!positive) {
             return true;
         }
         return Double.compare(Double.parseDouble(number), 0) > 0;
+    }
+
+    private static boolean nullCheck(String data, Limitations limitations) {
+        if (limitations.getDataType() == null) {
+            return true;
+        }
+        if (data == null || data.isBlank()) {
+            return limitations.isNullable();
+        }
+        return true;
     }
 
     private static boolean checkLong(String data) {

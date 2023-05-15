@@ -9,7 +9,7 @@ import me.lab6.common.utility.Validator;
 public class JsonValidator {
 
     protected static void ensureCorrect(DataType type, boolean nullable, boolean positive, String string) {
-        if (!Validator.validateData(string, new Limitations(type, nullable, positive))) {
+        if (Validator.validateData(string, new Limitations(type, nullable, positive)) != 0) {
             throw new IncorrectWorkerFieldException();
         }
     }

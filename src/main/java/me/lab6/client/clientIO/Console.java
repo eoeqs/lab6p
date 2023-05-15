@@ -33,7 +33,7 @@ public class Console {
         }
     }
 
-    private String getInput() throws NoSuchElementException {
+    public String getInput() throws NoSuchElementException {
         return scanner.nextLine().trim();
     }
 
@@ -42,8 +42,11 @@ public class Console {
         if (!inputStr.isBlank()) {
             String[] input = (scanner.nextLine().trim() + " ").split("\\s+", 2);
             input[0] = input[0].toLowerCase();
-            if (Validator.validateCommandAndArg(input)) {
+            String validationResult = Validator.validateCommandAndArg(input);
+            if (validationResult == null) {
                 sendMessage(input);
+            } else {
+                System.out.println(validationResult);
             }
         }
     }

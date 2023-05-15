@@ -4,43 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13cb3cb9-1653-4ee4-a419-cb2b52fe755a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Messages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Limitations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Validator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/JsonValidator.java" afterDir="false" />
+    <list default="true" id="13cb3cb9-1653-4ee4-a419-cb2b52fe755a" name="Changes" comment="validation, build tasks and slight refactoring">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/EntityConstructor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/ClientMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/Console.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/DataManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/network/UDPClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/ValidationChecker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/DataLimitations.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/json/AddressDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/AddressDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/json/AddressSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/AddressSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/json/CoordinatesDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/CoordinatesDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/json/CoordinatesSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/CoordinatesSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/json/OrganizationDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/OrganizationDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/json/OrganizationSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/OrganizationSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/json/WorkerDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/WorkerDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/json/WorkerMapDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/WorkerMapDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/json/WorkerMapSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/WorkerMapSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/json/WorkerSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/WorkerSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/ServerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/UDPDatagramServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/UDPDatagramServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Clear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Exit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/History.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/MinByStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/MinByStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Save.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Show.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/JsonValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/JsonValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +43,7 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="untitled" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
+                <item name="other" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -94,32 +63,35 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2Pn74kdiJdpoKUpPfAWGbuouQfm" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "K:/Java/Yebisu/Labs/lab6p/src/main/java/me/lab6/server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;K:/Java/Yebisu/Labs/lab6p/src/main/java/me/lab6/server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="K:\Java\Yebisu\Labs\lab6p\src\main\java\me\lab6\server" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.lab6p [serverJar]">
+  <component name="RunManager">
     <configuration name="lab6p [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -204,11 +176,25 @@
       <updated>1684080805300</updated>
       <workItem from="1684080806416" duration="3000" />
       <workItem from="1684141826840" duration="2262000" />
-      <workItem from="1684149361347" duration="13999000" />
+      <workItem from="1684149361347" duration="14598000" />
+      <workItem from="1684170328024" duration="6843000" />
     </task>
+    <task id="LOCAL-00001" summary="validation, build tasks and slight refactoring">
+      <created>1684168249086</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684168249086</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="validation, build tasks and slight refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="validation, build tasks and slight refactoring" />
   </component>
 </project>
