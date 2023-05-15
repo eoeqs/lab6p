@@ -4,7 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13cb3cb9-1653-4ee4-a419-cb2b52fe755a" name="Changes" comment="" />
+    <list default="true" id="13cb3cb9-1653-4ee4-a419-cb2b52fe755a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/Console.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/DataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/UDPClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/UserInteractionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/UserInteractionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/ValidationChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/ValidationChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/ExitException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/ExitException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/IncorrectWorkerFieldException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/IncorrectWorkerFieldException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/InputEndException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/InputEndException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/NoArgumentException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/NoArgumentException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/NonExistentCommandException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/NonExistentCommandException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/SameIDException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/SameIDException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/ScriptEndException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/ScriptEndException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/WrongTypeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/WrongTypeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/AddressDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/AddressDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/AddressSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/AddressSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/CoordinatesDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/CoordinatesDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/CoordinatesSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/CoordinatesSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/DataLimitations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/DataLimitations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/DataType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/DataType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/OrganizationDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/OrganizationDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/OrganizationSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/OrganizationSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/WorkerDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/WorkerDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Organization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Organization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Worker.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +59,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -42,7 +75,11 @@
       <option name="presentableId" value="Default" />
       <updated>1684080805300</updated>
       <workItem from="1684080806416" duration="3000" />
+      <workItem from="1684141826840" duration="2262000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
