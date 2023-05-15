@@ -1,9 +1,9 @@
-package commands;
+package me.lab6.server.commands;
 
-import managers.CollectionManager;
 
-import utilities.DataLimitations;
-import workerRelated.Worker;
+import me.lab6.common.utility.DataLimitations;
+import me.lab6.common.workerRelated.Worker;
+import me.lab6.server.managers.CollectionManager;
 
 /**
  * Command to print out all elements of the collection.

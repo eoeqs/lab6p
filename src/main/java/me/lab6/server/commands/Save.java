@@ -1,8 +1,10 @@
-package commands;
+package me.lab6.server.commands;
 
-import managers.CollectionManager;
-import managers.FileManager;
-import utilities.DataLimitations;
+
+
+import me.lab6.common.utility.DataLimitations;
+import me.lab6.server.managers.CollectionManager;
+import me.lab6.server.managers.FileManager;
 
 import java.io.IOException;
 

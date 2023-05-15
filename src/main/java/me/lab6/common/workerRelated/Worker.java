@@ -1,4 +1,4 @@
-package workerRelated;
+package me.lab6.common.workerRelated;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -13,9 +13,9 @@ public class Worker implements Comparable<Worker> {
     private final long id; // >0, auto-generated, unique
     private String name; // not null, not empty
     private final Coordinates coordinates; // not null
-    private final java.time.LocalDate creationDate; // not null, auto-generated
+    private final LocalDate creationDate; // not null, auto-generated
     private final int salary; // > 0
-    private final java.time.LocalDate startDate; // not null
+    private final LocalDate startDate; // not null
     private final Position position; // can be null
     private final Status status; // can be null
     private final Organization organization; // can be null
@@ -34,8 +34,8 @@ public class Worker implements Comparable<Worker> {
      * @param status       the status of the worker
      * @param organization the organization that the worker belongs to
      */
-    public Worker(long id, String name, Coordinates coordinates, java.time.LocalDate creationDate, int salary,
-                  java.time.LocalDate startDate, Position position, Status status, Organization organization) {
+    public Worker(long id, String name, Coordinates coordinates, LocalDate creationDate, int salary,
+                  LocalDate startDate, Position position, Status status, Organization organization) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;

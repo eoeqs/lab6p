@@ -15,7 +15,7 @@ public class Encoder {
 
         buffer.putInt(baos.size());
         buffer.put(baos.toByteArray());
-
+        buffer.flip();
         return buffer;
     }
 

@@ -1,4 +1,4 @@
-package utilities;
+package me.lab6.common.utility;
 
 /**
  * An enum representing the various data types that can be used in the application.

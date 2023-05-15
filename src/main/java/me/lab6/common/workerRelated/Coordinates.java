@@ -1,4 +1,4 @@
-package workerRelated;
+package me.lab6.common.workerRelated;
 
 /**
  * Represents coordinates with an x and y value.

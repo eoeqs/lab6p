@@ -1,9 +1,10 @@
-package commands;
+package me.lab6.server.commands;
 
-import managers.CollectionManager;
-import utilities.DataLimitations;
-import workerRelated.Status;
-import workerRelated.Worker;
+
+import me.lab6.common.utility.DataLimitations;
+import me.lab6.common.workerRelated.Status;
+import me.lab6.common.workerRelated.Worker;
+import me.lab6.server.managers.CollectionManager;
 
 /**
  * A command to print out all elements with the lowest status value in the collection.

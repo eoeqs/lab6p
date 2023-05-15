@@ -1,7 +1,8 @@
-package commands;
+package me.lab6.server.commands;
 
-import managers.CollectionManager;
-import utilities.DataLimitations;
+
+import me.lab6.common.utility.DataLimitations;
+import me.lab6.server.managers.CollectionManager;
 
 /**
  * The {@code Info} class represents a command to print out information about the collection.

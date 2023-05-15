@@ -1,10 +1,11 @@
-package utilities;
+package me.lab6.common.utility;
 
 import com.google.gson.*;
-import exceptions.IncorrectWorkerFieldException;
-import managers.DataManager;
-import workerRelated.Address;
-import workerRelated.Organization;
+import me.lab6.client.DataManager;
+import me.lab6.common.exceptions.IncorrectWorkerFieldException;
+import me.lab6.common.workerRelated.Address;
+import me.lab6.common.workerRelated.Organization;
+
 
 import java.lang.reflect.Type;
 

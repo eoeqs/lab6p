@@ -1,4 +1,4 @@
-package exceptions;
+package me.lab6.common.exceptions;
 
 /**
  * The SameIDException class represents an exception that is thrown when two objects

@@ -1,7 +1,9 @@
-package managers;
+package me.lab6.server.managers;
 
-import commands.*;
-import exceptions.ExitException;
+
+
+import me.lab6.common.exceptions.ExitException;
+import me.lab6.server.commands.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,19 +35,19 @@ public class CommandManager {
         Map<String, Command> commandMap = new HashMap<>();
         commandMap.put("info", new Info(collectionManager));
         commandMap.put("show", new Show(collectionManager));
-        commandMap.put("insert", new Insert(collectionManager));
-        commandMap.put("update", new Update(collectionManager));
-        commandMap.put("remove_key", new RemoveKey(collectionManager));
+//        commandMap.put("insert", new Insert(collectionManager));
+//        commandMap.put("update", new Update(collectionManager));
+//        commandMap.put("remove_key", new RemoveKey(collectionManager));
         commandMap.put("clear", new Clear(collectionManager));
         commandMap.put("save", new Save(collectionManager, fileManager));
-        commandMap.put("execute_script", new ExecuteScript(collectionManager, fileManager));
+//        commandMap.put("execute_script", new ExecuteScript(collectionManager, fileManager));
         commandMap.put("exit", new Exit());
         commandMap.put("history", new History(history));
-        commandMap.put("replace_if_lower", new ReplaceIfLower(collectionManager));
-        commandMap.put("remove_lower_key", new RemoveLowerKey(collectionManager));
+//        commandMap.put("replace_if_lower", new ReplaceIfLower(collectionManager));
+//        commandMap.put("remove_lower_key", new RemoveLowerKey(collectionManager));
         commandMap.put("min_by_status", new MinByStatus(collectionManager));
-        commandMap.put("count_by_position", new CountByPosition(collectionManager));
-        commandMap.put("filter_greater_than_organization", new FilterGreaterThanOrganization(collectionManager));
+//        commandMap.put("count_by_position", new CountByPosition(collectionManager));
+//        commandMap.put("filter_greater_than_organization", new FilterGreaterThanOrganization(collectionManager));
         commandMap.put("help", new Help(new ArrayList<>(commandMap.values())));
         this.commandMap = commandMap;
         this.keyList = new ArrayList<>(commandMap.keySet());
@@ -96,5 +98,11 @@ public class CommandManager {
             history.remove(0);
         }
     }
+    public void save() throws ExitException {
+        commandMap.get("save").execute("");
+    }
 
+    public void exit() throws ExitException {
+        commandMap.get("exit").execute("");
+    }
 }

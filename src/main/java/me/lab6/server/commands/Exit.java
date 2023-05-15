@@ -1,7 +1,8 @@
-package commands;
+package me.lab6.server.commands;
 
-import exceptions.ExitException;
-import utilities.DataLimitations;
+
+import me.lab6.common.exceptions.ExitException;
+import me.lab6.common.utility.DataLimitations;
 
 /**
  * A command that stops the application without saving.

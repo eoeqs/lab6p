@@ -1,4 +1,4 @@
-package utilities;
+package me.lab6.common.utility;
 
 /**
  * A class that represents the limitations for user input data. It includes information about the data type,
@@ -12,7 +12,6 @@ public class DataLimitations {
     private final String wrongTypeMessage;
     private final String noInputMessage;
 
-    //Для команд без аргумента
 
     /**
      * Constructs a new instance of DataLimitations for commands without an argument.
@@ -26,7 +25,6 @@ public class DataLimitations {
         noInputMessage = null;
     }
 
-    //Для команд с аргументом
 
     /**
      * Constructs a new instance of DataLimitations for commands with an argument.
@@ -44,7 +42,6 @@ public class DataLimitations {
         this.noInputMessage = noInputMessage;
     }
 
-    //Для вводимых данных
 
     /**
      * Constructs a new instance of DataLimitations for user input data.

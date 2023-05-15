@@ -1,6 +1,8 @@
-package commands;
+package me.lab6.server.commands;
 
-import utilities.DataLimitations;
+
+
+import me.lab6.common.utility.DataLimitations;
 
 import java.util.ArrayList;
 

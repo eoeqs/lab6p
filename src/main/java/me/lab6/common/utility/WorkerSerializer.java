@@ -1,10 +1,11 @@
-package utilities;
+package me.lab6.common.utility;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import workerRelated.Worker;
+import me.lab6.common.workerRelated.Worker;
+
 
 import java.lang.reflect.Type;
 

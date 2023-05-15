@@ -1,4 +1,4 @@
-package exceptions;
+package me.lab6.common.exceptions;
 
 /**
  * This exception is thrown when the input has reached the end.

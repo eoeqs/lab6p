@@ -1,8 +1,9 @@
-package utilities;
+package me.lab6.common.utility;
 
 import com.google.gson.*;
-import managers.DataManager;
-import workerRelated.Coordinates;
+import me.lab6.client.DataManager;
+import me.lab6.common.workerRelated.Coordinates;
+
 
 import java.lang.reflect.Type;
 

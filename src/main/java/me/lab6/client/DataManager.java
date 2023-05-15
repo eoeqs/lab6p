@@ -1,10 +1,10 @@
-package managers;
+package me.lab6.client;
 
 import com.google.gson.JsonObject;
-import exceptions.*;
-import utilities.DataType;
-import workerRelated.Position;
-import workerRelated.Status;
+import me.lab6.common.exceptions.*;
+import me.lab6.common.utility.DataType;
+import me.lab6.common.workerRelated.*;
+
 
 import java.io.File;
 import java.time.LocalDate;

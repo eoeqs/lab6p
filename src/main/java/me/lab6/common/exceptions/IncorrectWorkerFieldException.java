@@ -1,4 +1,4 @@
-package exceptions;
+package me.lab6.common.exceptions;
 
 /**
  * An exception indicating that an incorrect field value was provided.
