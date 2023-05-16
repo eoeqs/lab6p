@@ -68,22 +68,28 @@ public class FileManager {
      * @param collectionManager the collection manager object containing the workers to be written to the file.
      * @throws IOException if there is an error writing to the file.
      */
-    public void writeWorkersToFile(CollectionManager collectionManager) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
-        Gson gson = new GsonBuilder().setPrettyPrinting()
-                .registerTypeAdapter(Address.class, new AddressSerializer())
-                .registerTypeAdapter(Organization.class, new OrganizationSerializer())
-                .registerTypeAdapter(Coordinates.class, new CoordinatesSerializer())
-                .registerTypeAdapter(Worker.class, new WorkerSerializer())
-                .registerTypeAdapter(Worker[].class, new WorkerMapSerializer())
-                .create();
-        String jsonString = gson.toJson(collectionManager.getWorkerMap().values().toArray());
-        if (jsonString.isBlank()) {
-            writer.write("");
-        } else {
-            writer.write(jsonString);
+    public boolean writeWorkersToFile(CollectionManager collectionManager) throws IOException {
+        boolean isWritten = true;
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+            Gson gson = new GsonBuilder().setPrettyPrinting()
+                    .registerTypeAdapter(Address.class, new AddressSerializer())
+                    .registerTypeAdapter(Organization.class, new OrganizationSerializer())
+                    .registerTypeAdapter(Coordinates.class, new CoordinatesSerializer())
+                    .registerTypeAdapter(Worker.class, new WorkerSerializer())
+                    .registerTypeAdapter(Worker[].class, new WorkerMapSerializer())
+                    .create();
+            String jsonString = gson.toJson(collectionManager.getWorkerMap().values().toArray());
+            if (jsonString.isBlank()) {
+                writer.write("");
+            } else {
+                writer.write(jsonString);
+            }
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            return isWritten = false;
         }
-        writer.flush();
-        writer.close();
+        return isWritten;
     }
 }

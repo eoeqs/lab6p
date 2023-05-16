@@ -38,15 +38,15 @@ public class CommandManager {
         commandMap.put("info", new Info(collectionManager));
         commandMap.put("show", new Show(collectionManager));
 //        commandMap.put("insert", new Insert(collectionManager));
-//        commandMap.put("update", new Update(collectionManager));
-//        commandMap.put("remove_key", new RemoveKey(collectionManager));
+ //       commandMap.put("update", new Update(collectionManager));
+        commandMap.put("remove_key", new RemoveKey(collectionManager));
         commandMap.put("clear", new Clear(collectionManager));
-        commandMap.put("save", new Save(collectionManager, fileManager));
+
 //        commandMap.put("execute_script", new ExecuteScript(collectionManager, fileManager));
-        commandMap.put("exit", new Exit());
+        commandMap.put("exit", new Exit(collectionManager,fileManager));
         commandMap.put("history", new History(history));
-//        commandMap.put("replace_if_lower", new ReplaceIfLower(collectionManager));
-//        commandMap.put("remove_lower_key", new RemoveLowerKey(collectionManager));
+        commandMap.put("replace_if_lower", new ReplaceIfLower(collectionManager));
+        commandMap.put("remove_lower_key", new RemoveLowerKey(collectionManager));
         commandMap.put("min_by_status", new MinByStatus(collectionManager));
 //        commandMap.put("count_by_position", new CountByPosition(collectionManager));
 //        commandMap.put("filter_greater_than_organization", new FilterGreaterThanOrganization(collectionManager));
@@ -88,7 +88,7 @@ public class CommandManager {
     }
 
     public Response executeCommand(String command, Object arg) throws ExitException {
-        Response response = commandMap.get(command).execute(arg);
+        Response response = commandMap.get(command).execute((String) arg);
         history.add(command);
         if (history.size() > 6) {
             history.remove(0);

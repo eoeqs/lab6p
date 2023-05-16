@@ -14,7 +14,7 @@
 // * If the user decides to cancel the inserting process, they can use the '!e' command.
 // * The key argument should be a long value.
 // */
-//public class Insert implements Command {
+//public class Insert extends AbstractCommand {
 //    CollectionManager collectionManager;
 //
 //    /**

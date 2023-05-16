@@ -13,7 +13,7 @@
 // * with a newly described worker.
 // * Implements the {@link Command} interface.
 // */
-//public class Update implements Command {
+//public class Update extends AbstractCommand{
 //
 //    CollectionManager collectionManager;
 //

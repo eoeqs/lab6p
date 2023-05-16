@@ -5,23 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13cb3cb9-1653-4ee4-a419-cb2b52fe755a" name="Changes" comment="Client's request sending &amp; response receiving + printing response">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/UDPServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/ArgMustBeEmptyException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/AbstractCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jar/client/lab6-FIN.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jar/client/lab6-FIN.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jar/server/lab6-FIN.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jar/server/lab6-FIN.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/UserInteractionManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/network/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/network/UDPClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Clear.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/CountByPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/CountByPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/ExecuteScript.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Exit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/FilterGreaterThanOrganization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/FilterGreaterThanOrganization.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Help.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/History.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Insert.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/MinByStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/MinByStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveLowerKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveLowerKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/ReplaceIfLower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/ReplaceIfLower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Save.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Show.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Update.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CollectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/FileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,23 +88,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "K:/Java/Yebisu/Labs/lab6p/src/main/java/me/lab6/server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/fckgp/IdeaProjects/Lab5&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="K:\Java\Yebisu\Labs\lab6p\src\main\java\me\lab6\server" />
@@ -207,6 +213,8 @@
       <workItem from="1684170328024" duration="7499000" />
       <workItem from="1684214327534" duration="11909000" />
       <workItem from="1684239039680" duration="4256000" />
+      <workItem from="1684247701835" duration="5603000" />
+      <workItem from="1684253339576" duration="3629000" />
     </task>
     <task id="LOCAL-00001" summary="validation, build tasks and slight refactoring">
       <created>1684168249086</created>

@@ -1,38 +1,14 @@
 package me.lab6.server.commands;
-
-
 import me.lab6.common.Response;
 import me.lab6.common.utility.Limitations;
 
-/**
- * The Command interface represents a command that can be executed.
- */
 public interface Command {
-    /**
-     * Executes the command with the given argument.
-     *
-     * @param arg the argument to pass to the command
-     * @return
-     */
-    Response execute(Object arg);
 
-    /**
-     * @return the name of the command
-     */
-    String name();
+    Response execute(String arg);
 
-    /**
-     * @return the argument string for the command
-     */
-    String argDesc();
+    String getName();
 
-    /**
-     * @return the description of the command
-     */
-    String desc();
+    String getDesc();
 
-    /**
-     * @return an array of DataLimitations objects
-     */
     Limitations argLimitations();
 }

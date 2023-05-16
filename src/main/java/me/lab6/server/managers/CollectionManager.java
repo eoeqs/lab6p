@@ -70,6 +70,8 @@ public class CollectionManager {
         System.out.println(worker);
     }
 
+
+
     public static HashMap<Long, Worker> tempWorkerMap() {
         HashMap<Long, Worker> map = new HashMap<>();
         Worker one = new Worker(1, "One", new Coordinates(1, 2D), LocalDate.now(), 9000,

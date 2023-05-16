@@ -21,7 +21,7 @@
 ///**
 // * Executes commands in the given script.
 // */
-//public class ExecuteScript implements Command {
+//public class ExecuteScript extends AbstractCommand {
 //
 //    private final FileManager fileManager;
 //    private final CollectionManager collectionManager;

@@ -12,7 +12,7 @@
 // * Represents a command to print out elements from the worker collection with an organization value greater than a given organization.
 // * Implements the {@link Command} interface.
 // */
-//public class FilterGreaterThanOrganization implements Command {
+//public class FilterGreaterThanOrganization extends AbstractCommand {
 //    CollectionManager collectionManager;
 //    /**
 //     * Constructs a new {@code FilterGreaterThanOrganization} command with the specified collection manager.
