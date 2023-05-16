@@ -1,6 +1,7 @@
 package me.lab6.server.commands;
 
 
+import me.lab6.common.Response;
 import me.lab6.common.utility.Limitations;
 import me.lab6.server.managers.CollectionManager;
 
@@ -23,9 +24,11 @@ public class Clear implements Command {
     /**
      * Executes the clear command by clearing the WorkerMap collection.
      * If the collection is already empty, a message is printed to indicate so.
+     *
+     * @return
      */
     @Override
-    public void execute(String arg) {
+    public Response execute(Object arg) {
         if (collectionManager.getWorkerMap().isEmpty()) {
             System.out.println("This collection is already empty.\n");
             return;

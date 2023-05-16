@@ -1,6 +1,7 @@
 package me.lab6.server.commands;
 
 
+import me.lab6.common.Response;
 import me.lab6.common.utility.Limitations;
 import me.lab6.common.workerRelated.Status;
 import me.lab6.common.workerRelated.Worker;
@@ -26,9 +27,10 @@ public class MinByStatus implements Command {
      * Executes the MinByStatus command by printing out all elements with the lowest status value.
      *
      * @param arg a string argument that is not used in this command
+     * @return
      */
     @Override
-    public void execute(String arg) {
+    public Response execute(Object arg) {
         System.out.println("Minimal status is " + Status.minStatus() + ".");
         int count = 0;
         for (Worker w : collectionManager.getWorkerMap().values()) {

@@ -1,6 +1,7 @@
 package me.lab6.server.commands;
 
 
+import me.lab6.common.Response;
 import me.lab6.common.utility.Limitations;
 import me.lab6.server.managers.CollectionManager;
 
@@ -23,9 +24,10 @@ public class Info implements Command {
      * The collection keys are the same as the Workers' id's.
      *
      * @param arg the command argument (not used)
+     * @return
      */
     @Override
-    public void execute(String arg) {
+    public Response execute(Object arg) {
         System.out.println("Collection stores Workers.");
         System.out.println("Collection's initialization date is " + collectionManager.getCreationDate() + ".");
         System.out.println("The number of elements is " + collectionManager.getWorkerMap().size() + ".");

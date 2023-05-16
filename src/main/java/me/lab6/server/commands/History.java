@@ -2,6 +2,7 @@ package me.lab6.server.commands;
 
 
 
+import me.lab6.common.Response;
 import me.lab6.common.utility.Limitations;
 
 import java.util.ArrayList;
@@ -24,9 +25,10 @@ public class History implements Command {
      * Executes the command by printing out the last 6 executed commands.
      *
      * @param arg the command argument (not used in this command)
+     * @return
      */
     @Override
-    public void execute(String arg) {
+    public Response execute(Object arg) {
         int historyLength = history.size();
         if (historyLength == 0) {
             System.out.println("History is yet empty.\n");

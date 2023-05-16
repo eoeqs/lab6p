@@ -15,8 +15,8 @@ import java.util.Arrays;
 
 public class UDPClient {
 
-    private final int packetSize = 1024;
-    private final int dataSize = 1023;
+    private final static int packageSize = 1024;
+    private final static int dataSize = 1023;
     private final DatagramChannel client;
     private final InetSocketAddress addr;
 
@@ -52,7 +52,7 @@ public class UDPClient {
     }
 
     private byte[] receivePacket() throws IOException {
-        ByteBuffer buffer = ByteBuffer.allocate(packetSize);
+        ByteBuffer buffer = ByteBuffer.allocate(packageSize);
         SocketAddress address = null;
         while (address == null) {
             address = client.receive(buffer);

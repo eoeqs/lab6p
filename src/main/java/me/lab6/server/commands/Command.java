@@ -1,7 +1,7 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.exceptions.ExitException;
+import me.lab6.common.Response;
 import me.lab6.common.utility.Limitations;
 
 /**
@@ -12,8 +12,9 @@ public interface Command {
      * Executes the command with the given argument.
      *
      * @param arg the argument to pass to the command
+     * @return
      */
-    void execute(String arg) throws ExitException;
+    Response execute(Object arg);
 
     /**
      * @return the name of the command

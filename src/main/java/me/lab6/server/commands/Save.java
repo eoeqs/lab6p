@@ -2,6 +2,7 @@ package me.lab6.server.commands;
 
 
 
+import me.lab6.common.Response;
 import me.lab6.common.utility.Limitations;
 import me.lab6.server.managers.CollectionManager;
 import me.lab6.server.managers.FileManager;
@@ -29,9 +30,10 @@ public class Save implements Command {
      * Executes the save command, saving the current state of the collection to a file.
      *
      * @param arg the command argument
+     * @return
      */
     @Override
-    public void execute(String arg) {
+    public Response execute(Object arg) {
         System.out.println("Saving...");
         try {
             fileManager.writeWorkersToFile(collectionManager);

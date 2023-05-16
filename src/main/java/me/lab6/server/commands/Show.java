@@ -1,6 +1,7 @@
 package me.lab6.server.commands;
 
 
+import me.lab6.common.Response;
 import me.lab6.common.utility.Limitations;
 import me.lab6.common.workerRelated.Worker;
 import me.lab6.server.managers.CollectionManager;
@@ -23,9 +24,10 @@ public class Show implements Command {
      * Get the name of the command.
      *
      * @param arg the argument of the command
+     * @return
      */
     @Override
-    public void execute(String arg) {
+    public Response execute(Object arg) {
         if (collectionManager.getWorkerMap().isEmpty()) {
             System.out.println("There is nothing to show.\n");
         } else {

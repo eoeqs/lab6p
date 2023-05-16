@@ -2,6 +2,8 @@ package me.lab6.server.managers;
 
 
 
+import me.lab6.common.Request;
+import me.lab6.common.Response;
 import me.lab6.common.exceptions.ExitException;
 import me.lab6.server.commands.*;
 
@@ -81,28 +83,24 @@ public class CommandManager {
         return keyList.contains(string);
     }
 
-    /**
-     * Executes the specified command object with the given argument, and adds the command to the history list.
-     * If the history list size exceeds 6 elements, the oldest element is removed.
-     *
-     * @param command The command object to execute.
-     * @param arg     The argument string for the command.
-     * @throws ExitException If the command is the exit command and an exception is thrown during
-     */
+    public Response handleRequest(Request request) throws ExitException {
+        return executeCommand(request.command(), request.argument());
+    }
 
-
-    public void handleCommand(Command command, String arg) throws ExitException {
-        command.execute(arg);
-        history.add(command.name());
+    public Response executeCommand(String command, Object arg) throws ExitException {
+        Response response = commandMap.get(command).execute(arg);
+        history.add(command);
         if (history.size() > 6) {
             history.remove(0);
         }
+        return response;
     }
-    public void save() throws ExitException {
+
+    public void save(){
         commandMap.get("save").execute("");
     }
 
-    public void exit() throws ExitException {
+    public void exit() {
         commandMap.get("exit").execute("");
     }
 }

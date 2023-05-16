@@ -24,13 +24,9 @@ public class Console {
     }
 
     public void interact() {
-        if (mode) {
-            System.out.println(Messages.hello());
-        }
+        System.out.println(Messages.hello());
         while (true) {
-            if (mode) {
-                System.out.print("> ");
-            }
+            System.out.print("> ");
             try {
                 handleInput();
             } catch (NoSuchElementException e) {
@@ -46,7 +42,7 @@ public class Console {
     private void handleInput() throws NoSuchElementException {
         String inputStr = getInput();
         if (!inputStr.isBlank()) {
-            String[] input = (scanner.nextLine().trim() + " ").split("\\s+", 2);
+            String[] input = inputStr.split("\\s+", 2);
             input[0] = input[0].toLowerCase();
             String validationResult = Validator.validateCommandAndArg(input);
             if (validationResult == null) {
@@ -61,7 +57,7 @@ public class Console {
                     Organization organization = constructor.constructOrganization();
                     try {
                         System.out.println(getResponseForRequest(input[0], organization));
-                    } catch (IOException e ) {
+                    } catch (IOException e) {
                         System.out.println(Messages.serverCommunicationError());
                     }
                 } else {

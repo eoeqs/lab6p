@@ -1,6 +1,7 @@
 package me.lab6.server.commands;
 
 
+import me.lab6.common.Response;
 import me.lab6.common.exceptions.ExitException;
 import me.lab6.common.utility.Limitations;
 
@@ -13,10 +14,11 @@ public class Exit implements Command {
      * Throws an ExitException to stop the application without saving.
      *
      * @param arg a string argument (not used in this command)
+     * @return
      */
     @Override
-    public void execute(String arg) throws ExitException {
-        throw new ExitException();
+    public Response execute(Object arg) {
+
     }
     /**
      * Returns the name of this command.

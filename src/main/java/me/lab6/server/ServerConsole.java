@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class ServerConsole {
     private final Scanner scanner;
-    private CommandManager commandManager;
+    private final CommandManager commandManager;
     public ServerConsole(Scanner scanner, CommandManager commandManager){
         this.scanner = scanner;
         this.commandManager = commandManager;
     }
-    public void checkServerConsole() throws IOException, ExitException {
+    public void checkServerConsole() throws IOException {
         if (System.in.available() > 0) {
             String command = scanner.nextLine().trim();
             switch (command) {

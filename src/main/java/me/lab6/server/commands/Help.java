@@ -1,6 +1,7 @@
 package me.lab6.server.commands;
 
 
+import me.lab6.common.Response;
 import me.lab6.common.utility.Limitations;
 
 import java.util.ArrayList;
@@ -24,9 +25,10 @@ public class Help implements Command {
      * Prints out the list of available commands with their descriptions.
      *
      * @param arg the argument for the command (not used in this case).
+     * @return
      */
     @Override
-    public void execute(String arg) {
+    public Response execute(Object arg) {
         for (Command c : commands) {
             if (c.argDesc().isEmpty()) {
                 System.out.println("'" + c.name() + "' - " + c.desc());
