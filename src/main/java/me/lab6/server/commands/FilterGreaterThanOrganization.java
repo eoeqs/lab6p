@@ -1,18 +1,17 @@
 //package me.lab6.server.commands;
 //
-//
+//import me.lab6.common.Response;
 //import me.lab6.common.exceptions.ExitException;
-//import me.lab6.common.utility.DataLimitations;
 //import me.lab6.common.workerRelated.Organization;
 //import me.lab6.common.workerRelated.Worker;
+//import me.lab6.server.commands.Command;
 //import me.lab6.server.managers.CollectionManager;
-//import me.lab6.server.managers.UserInteractionManager;
 //
 ///**
 // * Represents a command to print out elements from the worker collection with an organization value greater than a given organization.
 // * Implements the {@link Command} interface.
 // */
-//public class FilterGreaterThanOrganization extends AbstractCommand {
+//public class FilterGreaterThanOrganization implements Command {
 //    CollectionManager collectionManager;
 //    /**
 //     * Constructs a new {@code FilterGreaterThanOrganization} command with the specified collection manager.
@@ -30,7 +29,7 @@
 //     * @param arg the arguments for the command (not used in this command)
 //     */
 //    @Override
-//    public void execute(String arg) {
+//    public Response execute(String arg) {
 //        if (UserInteractionManager.getMode()) {
 //            System.out.println("To cancel the organization description process, use '!e'.");
 //            System.out.println("Target organization:");
@@ -79,13 +78,5 @@
 //    public String desc() {
 //        return "print out elements with Organization value greater than given";
 //    }
-//    /**
-//     * Returns the argument limitations for the command (no limitations in this case).
-//     *
-//     * @return the argument limitations for the command
-//     */
-//    @Override
-//    public Object[] argLimitations() {
-//        return new DataLimitations().limitations();
-//    }
+//
 //}

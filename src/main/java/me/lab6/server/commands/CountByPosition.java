@@ -2,22 +2,28 @@ package me.lab6.server.commands;
 
 import me.lab6.common.Response;
 import me.lab6.common.utility.DataType;
-import me.lab6.common.utility.Limitations;
 import me.lab6.common.workerRelated.Position;
 import me.lab6.common.workerRelated.Worker;
+import me.lab6.server.commands.Command;
 import me.lab6.server.managers.CollectionManager;
 
-
-public class CountByPosition extends AbstractCommand {
+public class CountByPosition implements Command {
     CollectionManager collectionManager;
 
-
+    /**
+     * Constructs a new CountByPosition command with the given ColMan object.
+     *
+     * @param collectionManager the ColMan object to use for the command
+     */
     public CountByPosition(CollectionManager collectionManager) {
-        super("count_by_position", "prints out the number of elements with Position field value equal to given.");
         this.collectionManager = collectionManager;
     }
 
-
+    /**
+     * Executes the command with the given argument.
+     *
+     * @param arg the Position value to count
+     */
     @Override
     public Response execute(String arg) {
         Long key = Long.parseLong(arg);
@@ -35,14 +41,35 @@ public class CountByPosition extends AbstractCommand {
         }
     }
 
+    /**
+     * Returns the name of the command.
+     *
+     * @return the name of the command
+     */
     @Override
-    public Limitations argLimitations() {
-//        return new DataLimitations(DataType.POSITION,
-//                UserInteractionManager.wrongArgMessage(this) +
-//                        "Please, use a proper Position value (" + Position.allPositions() + ").",
-//                UserInteractionManager.noArgMessage(this)).limitations();
-//    }
-//}
-        return null;
+    public String name() {
+        return "count_by_position";
     }
+
+    /**
+     * Returns the argument string for use in a help message.
+     *
+     * @return the argument string for the command
+     */
+    @Override
+    public String argDesc() {
+        return "{position(head_of_department, developer, manager_of_cleaning)}";
+    }
+
+    /**
+     * Returns the description of the command for use in a help message.
+     *
+     * @return the description of the command
+     */
+    @Override
+    public String desc() {
+        return "print out the number of elements with Position field value equal to given";
+    }
+
+
 }

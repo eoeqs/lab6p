@@ -45,10 +45,10 @@ public class CommandManager {
 //        commandMap.put("execute_script", new ExecuteScript(collectionManager, fileManager));
         commandMap.put("exit", new Exit(collectionManager,fileManager));
         commandMap.put("history", new History(history));
-        commandMap.put("replace_if_lower", new ReplaceIfLower(collectionManager));
+//                commandMap.put("replace_if_lower", new ReplaceIfLower(collectionManager));
         commandMap.put("remove_lower_key", new RemoveLowerKey(collectionManager));
         commandMap.put("min_by_status", new MinByStatus(collectionManager));
-//        commandMap.put("count_by_position", new CountByPosition(collectionManager));
+        commandMap.put("count_by_position", new CountByPosition(collectionManager));
 //        commandMap.put("filter_greater_than_organization", new FilterGreaterThanOrganization(collectionManager));
         commandMap.put("help", new Help(new ArrayList<>(commandMap.values())));
         this.commandMap = commandMap;

@@ -1,26 +1,66 @@
 package me.lab6.server.commands;
 
+
 import me.lab6.common.Response;
-import me.lab6.common.utility.Limitations;
 import me.lab6.server.managers.CollectionManager;
 
-
-public class Info extends AbstractCommand {
+/**
+ * The {@code Info} class represents a command to print out information about the collection.
+ * It implements the {@code Command} interface.
+ */
+public class Info implements Command {
     CollectionManager collectionManager;
 
+    /**
+     * Constructs an {@code Info} object with the given collection manager.
+     *
+     * @param collectionManager the collection manager
+     */
     public Info(CollectionManager collectionManager) {
-        super("info", "Returns info about collection.");
-        this.collectionManager=collectionManager;
+        this.collectionManager = collectionManager;
     }
 
+    /**
+     * Prints out information about the collection.
+     * Prints out the collection's initialization date, the number of elements and that the collection stores Workers.
+     * The collection keys are the same as the Workers' id's.
+     *
+     * @param arg the command argument (not used)
+     */
     @Override
     public Response execute(String arg) {
-        return new Response(String.format("InitializationDate : %s, type : %s, element count : %d", collectionManager.getCreationDate(), " stores Workers.",collectionManager.getWorkerMap().size()));
+        return new Response(String.format("InitializationDate : %s, type : %s, element count : %d", collectionManager.getCreationDate(), " stores Workers.", collectionManager.getWorkerMap().size()));
 
     }
 
+    /**
+     * Returns the command name.
+     *
+     * @return the command name
+     */
     @Override
-    public Limitations argLimitations() {
-        return new Limitations();
+    public String name() {
+        return "info";
+    }
+
+    /**
+     * Returns the command argument format.
+     * The {@code Info} command doesn't require an argument, so it returns an empty string.
+     *
+     * @return an empty string
+     */
+    @Override
+    public String argDesc() {
+        return "";
+    }
+
+    /**
+     * Returns the command description for the help command.
+     *
+     * @return the command description
+     */
+    @Override
+    public String desc() {
+        return "print out the information about the collection";
     }
 }

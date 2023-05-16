@@ -1,32 +1,75 @@
 package me.lab6.server.commands;
 
+
 import me.lab6.common.Response;
 import me.lab6.common.exceptions.ArgMustBeEmptyException;
-import me.lab6.common.utility.Limitations;
 
 import java.util.ArrayList;
 
-public class Help extends AbstractCommand {
+/**
+ * Represents the Help command that prints out the list of available commands with their descriptions.
+ * Implements the {@link Command} interface.
+ */
+public class Help implements Command {
     ArrayList<Command> commands;
 
+    /**
+     * Constructs a new Help command with the given list of commands.
+     *
+     * @param commands the list of commands to be displayed.
+     */
+
     public Help(ArrayList<Command> commands) {
-        super("help", "returns a list of commands.");
         this.commands = commands;
     }
 
+    /**
+     * Prints out the list of available commands with their descriptions.
+     *
+     * @param arg the argument for the command (not used in this case).
+     */
     @Override
     public Response execute(String arg) {
-        try {
-            StringBuilder s = new StringBuilder();
-            if (arg.isEmpty()) throw new ArgMustBeEmptyException();
-            for (Command c : commands) {
-                s.append(c.getName()).append(" ").append(c.getDesc()).append("\n");
-            }
 
-            return new Response(s.toString());
-        } catch (ArgMustBeEmptyException e) {
-            return new Response("Command argument must be empty.");
+        StringBuilder s = new StringBuilder();
+        for (Command c : commands) {
+            if (c.argDesc().isEmpty()) {
+                s.append(c.name()).append(" ").append(c.desc()).append("\n");
+            } else {
+                s.append(c.name()).append(" ").append(c.argDesc()).append(c.desc()).append("\n");
+            }
         }
+        return new Response(s.toString());
+    }
+
+
+    /**
+     * Returns the name of the command.
+     *
+     * @return the name of the command.
+     */
+    @Override
+    public String name() {
+        return "help";
+    }
+
+    /**
+     * Returns the argument description for the command.
+     *
+     * @return an empty string, as the command does not require an argument.
+     */
+    @Override
+    public String argDesc() {
+        return "";
+    }
+
+    /**
+     * Returns the description of the command.
+     *
+     * @return the description of the command.
+     */
+    @Override
+    public String desc() {
+        return "print out the list of available commands";
     }
 }
-

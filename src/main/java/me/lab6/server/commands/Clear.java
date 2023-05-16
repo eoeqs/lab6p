@@ -3,17 +3,26 @@ package me.lab6.server.commands;
 
 import me.lab6.common.Response;
 import me.lab6.common.exceptions.ArgMustBeEmptyException;
-
+import me.lab6.common.utility.Limitations;
 import me.lab6.server.managers.CollectionManager;
 
-public class Clear extends AbstractCommand {
+
+public class Clear implements Command {
     CollectionManager collectionManager;
 
+    /**
+     * Constructs a Clear object with a specified ColMan object.
+     *
+     * @param collectionManager the ColMan object used to manage the collection
+     */
     public Clear(CollectionManager collectionManager) {
-        super("clear", "clears the collection.");
         this.collectionManager = collectionManager;
     }
 
+    /**
+     * Executes the clear command by clearing the WorkerMap collection.
+     * If the collection is already empty, a message is printed to indicate so.
+     */
     @Override
     public Response execute(String arg) {
         try {
@@ -26,6 +35,30 @@ public class Clear extends AbstractCommand {
         } catch (ArgMustBeEmptyException e) {
             return new Response("Command argument must be empty.");
         }
+    }
+
+    /**
+     * @return the name of this command
+     */
+    @Override
+    public String name() {
+        return "clear";
+    }
+
+    /**
+     * @return the argument string for the command
+     */
+    @Override
+    public String argDesc() {
+        return "";
+    }
+
+    /**
+     * @return a description of this command
+     */
+    @Override
+    public String desc() {
+        return "clear the collection";
     }
 
 
