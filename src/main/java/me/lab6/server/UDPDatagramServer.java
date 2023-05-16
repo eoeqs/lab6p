@@ -31,7 +31,7 @@ public class UDPDatagramServer {
                 serverConsole.checkServerConsole();
                 if (checkForMessage()) {
                     Object message = getMessage();
-                    if (message instanceof Request) System.out.println(((Request) message).getCommand());
+                    if (message instanceof Request) System.out.println(((Request) message).command());
                 }
             } catch (ExitException e) {
                 System.exit(0);

@@ -58,7 +58,7 @@ public class EntityConstructor {
         return new Address(street, zipCode);
     }
 
-    public Organization constructOrganization() throws NoSuchElementException {
+    protected Organization constructOrganization() throws NoSuchElementException {
         String orgName = getField(new Limitations(DataType.STRING, false, false,
                 "Enter the organization's name:", "wtf",
                 "Organization's name can't be empty."));
@@ -74,7 +74,7 @@ public class EntityConstructor {
         return new Organization(orgName, annualTurnover, employeeCount, address);
     }
 
-    public Worker constructWorker(long id) throws NoSuchElementException {
+    protected Worker constructWorker(long id) throws NoSuchElementException {
         String name = getField(new Limitations(DataType.STRING, false, false,
                 "Enter the worker's name:", "wtf",
                 "Worker's name can't be empty."));

@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13cb3cb9-1653-4ee4-a419-cb2b52fe755a" name="Changes" comment="validation, build tasks and slight refactoring">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/EntityConstructor.java" afterDir="false" />
+    <list default="true" id="13cb3cb9-1653-4ee4-a419-cb2b52fe755a" name="Changes" comment="EntityConstructor, changed validation logic a little">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/Response.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/JsonValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/JsonValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/EntityConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/EntityConstructor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/network/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/network/UDPClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/Encoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/Encoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/UDPDatagramServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/UDPDatagramServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +94,7 @@
       <recent name="K:\Java\Yebisu\Labs\lab6p\src\main\java\me\lab6\server" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.lab6p [build]">
     <configuration name="lab6p [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -177,7 +180,8 @@
       <workItem from="1684080806416" duration="3000" />
       <workItem from="1684141826840" duration="2262000" />
       <workItem from="1684149361347" duration="14598000" />
-      <workItem from="1684170328024" duration="6843000" />
+      <workItem from="1684170328024" duration="7499000" />
+      <workItem from="1684214327534" duration="7306000" />
     </task>
     <task id="LOCAL-00001" summary="validation, build tasks and slight refactoring">
       <created>1684168249086</created>
@@ -186,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684168249086</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="EntityConstructor, changed validation logic a little">
+      <created>1684177592135</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684177592135</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +206,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="validation, build tasks and slight refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="validation, build tasks and slight refactoring" />
+    <MESSAGE value="EntityConstructor, changed validation logic a little" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityConstructor, changed validation logic a little" />
   </component>
 </project>

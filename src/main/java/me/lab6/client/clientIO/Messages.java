@@ -22,4 +22,8 @@ public class Messages {
     public static String noInput(String commandName, String requiredType) {
         return "Command '" + commandName + "' requires an argument (" + requiredType + ").";
     }
+
+    public static String serverCommunicationError() {
+        return "There was an error during the communication with server. Please, try again.";
+    }
 }
