@@ -47,8 +47,8 @@ public class ServerMain {
     }
 
     private static void prepareAndStart(FileManager fileManager, HashMap<Long, Worker> workerMap) {
-        CollectionManager collectionManager = new CollectionManager(workerMap, LocalDate.now().toString());
-        CommandManager commandManager = new CommandManager(collectionManager, fileManager, true);
+        CollectionManager collectionManager = new CollectionManager(workerMap);
+        CommandManager commandManager = new CommandManager(collectionManager, fileManager);
         try {
             Scanner scanner = new Scanner(System.in);
             ServerConsole serverConsole = new ServerConsole(scanner, commandManager);

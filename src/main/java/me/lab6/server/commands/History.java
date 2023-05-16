@@ -27,17 +27,15 @@ public class History implements Command {
      * @param arg the command argument (not used in this command)
      */
     @Override
-    public Response execute(String arg) {
-
-        StringBuilder s = new StringBuilder();
-        int historyLength = history.size();
-        if (historyLength == 0) {
+    public Response execute(Object arg) {
+        if (history.size() == 0) {
             return new Response("History is yet empty.\n");
         }
+        StringBuilder sb = new StringBuilder();
         for (String i : history) {
-            s.append(i).append("\n");
+            sb.append(i).append("\n");
         }
-        return new Response(s.toString());
+        return new Response(sb.toString());
     }
 
     /**
@@ -57,7 +55,7 @@ public class History implements Command {
      */
     @Override
     public String argDesc() {
-        return "";
+        return null;
     }
 
     /**

@@ -2,6 +2,7 @@ package me.lab6.server.commands;
 
 
 import me.lab6.common.Response;
+import me.lab6.common.workerRelated.Worker;
 import me.lab6.server.managers.CollectionManager;
 
 /**
@@ -28,9 +29,19 @@ public class Info implements Command {
      * @param arg the command argument (not used)
      */
     @Override
-    public Response execute(String arg) {
-        return new Response(String.format("InitializationDate : %s, type : %s, element count : %d", collectionManager.getCreationDate(), " stores Workers.", collectionManager.getWorkerMap().size()));
-
+    public Response execute(Object arg) {
+        StringBuilder sb = new StringBuilder("This collection stores Worker elements in a HashMap.\n");
+        sb.append("The workers' IDs match the map's keys.\n");
+        sb.append(collectionManager.getWorkerMap().isEmpty() ? "This collection is yet empty.\n" : "Currently there are " +
+                collectionManager.getWorkerMap().size() + " elements in this collection.\n");
+        if (!collectionManager.getWorkerMap().isEmpty()) {
+            int salarySum = 0;
+            for (Worker w : collectionManager.getWorkerMap().values()) {
+                salarySum += w.getSalary();
+            }
+            sb.append("The sum of all workers' salaries is ").append(salarySum).append("\n");
+        }
+        return new Response(sb.toString());
     }
 
     /**
@@ -51,7 +62,7 @@ public class Info implements Command {
      */
     @Override
     public String argDesc() {
-        return "";
+        return null;
     }
 
     /**

@@ -6,6 +6,8 @@ import me.lab6.common.workerRelated.Status;
 import me.lab6.common.workerRelated.Worker;
 import me.lab6.server.managers.CollectionManager;
 
+import java.util.List;
+
 /**
  * A command to print out all elements with the lowest status value in the collection.
  * Implements the {@link Command} interface.
@@ -28,23 +30,20 @@ public class MinByStatus implements Command {
      * @param arg a string argument that is not used in this command
      */
     @Override
-    public Response execute(String arg) {
-        int count = 0;
-        StringBuilder s = new StringBuilder();
-        for (Worker w : collectionManager.getWorkerMap().values()) {
-            if (w.getStatus() == Status.FIRED) {
-                s.append(w).append("\n");
-                count++;
+    public Response execute(Object arg) {
+        Status minStatus = Status.minStatus();
+        List<Worker> filtered = collectionManager.getWorkerMap().values()
+                .stream().filter(w -> w.getStatus() == minStatus).toList();
+        StringBuilder sb = new StringBuilder("The minimal Status value is ").append(minStatus);
+        if (filtered.size() == 0) {
+            sb.append("The collection doesn't contain any elements with the minimal Status value.");
+        } else {
+            for (Worker w : filtered) {
+                sb.append(w).append("\n");
             }
         }
-        if (count == 0) {
-            return new Response("The collection doesn't contain elements with the minimal status value.\n");
-        } else {
-            return new Response(s.toString());
-        }
+        return new Response(sb.toString());
     }
-
-
 
     /**
      * Returns the name of the MinByStatus command.
@@ -63,7 +62,7 @@ public class MinByStatus implements Command {
      */
     @Override
     public String argDesc() {
-        return "";
+        return null;
     }
 
     /**

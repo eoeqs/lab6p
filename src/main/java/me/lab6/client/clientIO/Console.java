@@ -4,6 +4,7 @@ package me.lab6.client.clientIO;
 import me.lab6.client.network.UDPClient;
 import me.lab6.common.Request;
 import me.lab6.common.Response;
+import me.lab6.common.utility.Messages;
 import me.lab6.common.utility.Validator;
 import me.lab6.common.workerRelated.Organization;
 import me.lab6.common.workerRelated.Worker;
@@ -30,6 +31,7 @@ public class Console {
             try {
                 handleInput();
             } catch (NoSuchElementException e) {
+                System.out.println(Messages.goodbye());
                 System.exit(0);
             }
         }
@@ -46,33 +48,48 @@ public class Console {
             input[0] = input[0].toLowerCase();
             String validationResult = Validator.validateCommandAndArg(input);
             if (validationResult == null) {
+                Response response = null;
                 if (input[0].equals("insert") || input[0].equals("replace_if_lower") || input[0].equals("update")) {
-                    Worker worker = constructor.constructWorker(Long.parseLong(input[1]));
                     try {
-                        System.out.println(getResponseForRequest(input[0], worker));
-                    } catch (IOException e) {
-                        System.out.println(Messages.serverCommunicationError());
+                        Worker worker = constructor.constructWorker(Long.parseLong(input[1]));
+                        try {
+                            response = getResponseForRequest(input[0], worker);
+                        } catch (IOException e) {
+                            System.out.println(Messages.serverCommunicationError());
+                        }
+                    } catch (NoSuchElementException e) {
+                        System.out.println("Worker description process was canceled.");
                     }
                 } else if (input[0].equals("filter_greater_than_organization")) {
-                    Organization organization = constructor.constructOrganization();
                     try {
-                        System.out.println(getResponseForRequest(input[0], organization));
-                    } catch (IOException e) {
-                        System.out.println(Messages.serverCommunicationError());
+                        Organization organization = constructor.constructOrganization();
+                        try {
+                            response = getResponseForRequest(input[0], organization);
+                        } catch (IOException e) {
+                            System.out.println(Messages.serverCommunicationError());
+                        }
+                    } catch (NoSuchElementException e) {
+                        System.out.println("Organization description process was canceled.");
                     }
                 } else {
                     if (input.length > 1) {
                         try {
-                            System.out.println(getResponseForRequest(input));
+                            response = getResponseForRequest(input);
                         } catch (IOException e) {
                             System.out.println(Messages.serverCommunicationError());
                         }
                     } else {
                         try {
-                            System.out.println(getResponseForRequest(input[0]));
+                            response = getResponseForRequest(input[0]);
                         } catch (IOException e) {
                             System.out.println(Messages.serverCommunicationError());
                         }
+                    }
+                }
+                if (response != null) {
+                    System.out.println();
+                    if (response.message().equals(Messages.goodbye())) {
+                        System.exit(0);
                     }
                 }
             } else {

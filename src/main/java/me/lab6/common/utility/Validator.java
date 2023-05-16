@@ -1,6 +1,5 @@
 package me.lab6.common.utility;
 
-import me.lab6.client.clientIO.Messages;
 import me.lab6.common.workerRelated.Position;
 import me.lab6.common.workerRelated.Status;
 

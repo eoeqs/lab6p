@@ -2,6 +2,7 @@ package me.lab6.server.commands;
 
 import me.lab6.common.Response;
 import me.lab6.common.exceptions.ArgMustBeEmptyException;
+import me.lab6.common.utility.Messages;
 import me.lab6.server.managers.CollectionManager;
 import me.lab6.server.managers.FileManager;
 
@@ -13,28 +14,9 @@ import java.io.IOException;
  */
 public class Exit implements Command {
 
-    private final FileManager fileManager;
-    private final CollectionManager collectionManager;
-
-    public Exit(CollectionManager collectionManager, FileManager fileManager) {
-        this.fileManager = fileManager;
-        this.collectionManager = collectionManager;
-    }
-
     @Override
-    public Response execute(String argument) {
-        try {
-            if (!argument.isEmpty()) throw new ArgMustBeEmptyException();
-            if (fileManager.writeWorkersToFile(collectionManager)) {
-                System.exit(0);
-            }
-        } catch (ArgMustBeEmptyException e) {
-            System.out.println("Command arguments must be empty.");
-        } catch (IOException e) {
-            System.out.println("There was an error saving collection to file.");
-            ;
-        }
-        return null;
+    public Response execute(Object argument) {
+        return new Response(Messages.goodbye());
     }
 
     /**
@@ -54,7 +36,7 @@ public class Exit implements Command {
      */
     @Override
     public String argDesc() {
-        return "";
+        return null;
     }
 
     /**
@@ -64,7 +46,7 @@ public class Exit implements Command {
      */
     @Override
     public String desc() {
-        return "stop the application without saving";
+        return "end this session and close the application";
     }
 
 }

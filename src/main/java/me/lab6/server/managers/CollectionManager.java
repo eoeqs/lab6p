@@ -13,17 +13,14 @@ import java.util.HashMap;
  */
 public class CollectionManager {
     private HashMap<Long, Worker> workerMap;
-    private final String creationDate;
 
     /**
      * The constructor of the ColMan class. It initializes the workerMap and creationDate fields.
      *
      * @param workerMap    a HashMap where the keys are long values and the values are Worker objects.
-     * @param creationDate a String value that represents the date of creation of the collection.
      */
-    public CollectionManager(HashMap<Long, Worker> workerMap, String creationDate) {
+    public CollectionManager(HashMap<Long, Worker> workerMap) {
         this.workerMap = workerMap;
-        this.creationDate = creationDate;
     }
 
     /**
@@ -45,32 +42,27 @@ public class CollectionManager {
     }
 
     /**
-     * Getter method for the creationDate field.
-     *
-     * @return a String value that represents the date of creation of the collection.
-     */
-    public String getCreationDate() {
-        return creationDate;
-    }
-
-    /**
      * Replaces the Worker object with the given key in the workerMap with a new Worker object created through
      * UIMan.createNewWorker method.
      *
      * @param worker the new Worker to replace the old one.
      */
 
-    public void replace(Worker worker) {
+    public String add(Worker worker) {
+        long key = worker.getId();
+        workerMap.put(key, worker);
+        return "The following element was inserted into the collection:\n" + worker + "\n";
+    }
+
+    public String replace(Worker worker) {
         long key = worker.getId();
         Worker oldWorker = workerMap.get(key);
         workerMap.replace(key, worker);
-        System.out.println("\nOld element under the key = " + key + ":");
-        System.out.println(oldWorker);
-        System.out.println("\nwas replaced by a new one:");
-        System.out.println(worker);
+        return "Old element under the key = " + key + ":\n" +
+                oldWorker + "\n" +
+                "was replaced by a new one:\n" +
+                worker + "\n";
     }
-
-
 
     public static HashMap<Long, Worker> tempWorkerMap() {
         HashMap<Long, Worker> map = new HashMap<>();

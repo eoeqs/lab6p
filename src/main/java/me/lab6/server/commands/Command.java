@@ -2,7 +2,6 @@ package me.lab6.server.commands;
 
 
 import me.lab6.common.Response;
-import me.lab6.common.utility.Limitations;
 
 /**
  * The Command interface represents a command that can be executed.
@@ -13,7 +12,7 @@ public interface Command {
      *
      * @param arg the argument to pass to the command
      */
-    Response execute(String arg);
+    Response execute(Object arg);
 
     /**
      * @return the name of the command
@@ -29,9 +28,5 @@ public interface Command {
      * @return the description of the command
      */
     String desc();
-
-    /**
-     * @return an array of DataLimitations objects
-     */
 
 }

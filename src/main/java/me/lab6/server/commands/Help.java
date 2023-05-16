@@ -2,7 +2,6 @@ package me.lab6.server.commands;
 
 
 import me.lab6.common.Response;
-import me.lab6.common.exceptions.ArgMustBeEmptyException;
 
 import java.util.ArrayList;
 
@@ -29,17 +28,19 @@ public class Help implements Command {
      * @param arg the argument for the command (not used in this case).
      */
     @Override
-    public Response execute(String arg) {
+    public Response execute(Object arg) {
 
-        StringBuilder s = new StringBuilder();
-        for (Command c : commands) {
-            if (c.argDesc().isEmpty()) {
-                s.append(c.name()).append(" ").append(c.desc()).append("\n");
-            } else {
-                s.append(c.name()).append(" ").append(c.argDesc()).append(c.desc()).append("\n");
+        StringBuilder sb = new StringBuilder(name());
+        sb.append(" - ").append(desc()).append("\n");
+        for (Command command : commands) {
+            sb.append(command.name());
+            if (command.argDesc() != null) {
+                sb.append(" ").append(command.argDesc());
             }
+            sb.append(" - ").append(command.desc()).append("\n");
         }
-        return new Response(s.toString());
+
+        return new Response(sb.toString());
     }
 
 
@@ -60,7 +61,7 @@ public class Help implements Command {
      */
     @Override
     public String argDesc() {
-        return "";
+        return null;
     }
 
     /**

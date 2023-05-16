@@ -2,8 +2,6 @@ package me.lab6.server.commands;
 
 
 import me.lab6.common.Response;
-import me.lab6.common.exceptions.ArgMustBeEmptyException;
-import me.lab6.common.utility.Limitations;
 import me.lab6.server.managers.CollectionManager;
 
 
@@ -24,17 +22,12 @@ public class Clear implements Command {
      * If the collection is already empty, a message is printed to indicate so.
      */
     @Override
-    public Response execute(String arg) {
-        try {
-            if (!arg.isEmpty()) throw new ArgMustBeEmptyException();
-            if (collectionManager.getWorkerMap().isEmpty()) {
-                return new Response("This collection is already empty.\n");
-            }
-            collectionManager.getWorkerMap().clear();
-            return new Response("Collection has been cleared.\n");
-        } catch (ArgMustBeEmptyException e) {
-            return new Response("Command argument must be empty.");
+    public Response execute(Object arg) {
+        if (collectionManager.getWorkerMap().isEmpty()) {
+            return new Response("This collection is already empty.\n");
         }
+        collectionManager.getWorkerMap().clear();
+        return new Response("Collection has been cleared.\n");
     }
 
     /**
@@ -50,7 +43,7 @@ public class Clear implements Command {
      */
     @Override
     public String argDesc() {
-        return "";
+        return null;
     }
 
     /**

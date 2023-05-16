@@ -148,12 +148,12 @@ public class Worker implements Comparable<Worker> {
     public String toString() {
         String one = name + " (ID: " + id + ", position: " + position + ", status: " + status + ", salary: " + salary +
                 ", creation date: " + creationDate + ", start date: " + startDate + ", coordinates: " + coordinates +
-                ")";
+                ")\n";
         String two;
         if (organization == null) {
-            two = "\nIsn't a member of an organization right now.";
+            two = "Isn't a member of an organization right now.";
         } else {
-            two = "\nWorks at " + organization.fullName() + " (annual turnover: " + organization.annualTurnover() +
+            two = "Works at " + organization.fullName() + " (annual turnover: " + organization.annualTurnover() +
                     ", employee count: " + organization.employeesCount() + ", postal address: " +
                     organization.postalAddress() + ")";
         }

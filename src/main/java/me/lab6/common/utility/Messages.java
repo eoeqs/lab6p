@@ -1,4 +1,4 @@
-package me.lab6.client.clientIO;
+package me.lab6.common.utility;
 
 public class Messages {
 

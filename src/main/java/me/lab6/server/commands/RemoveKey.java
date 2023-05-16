@@ -27,8 +27,8 @@ public class RemoveKey implements Command {
      * @param arg the key of the element to remove from the collection
      */
     @Override
-    public Response execute(String arg) {
-        long key = Long.parseLong(arg);
+    public Response execute(Object arg) {
+        long key = Long.parseLong((String) arg);
         for (Worker worker : collectionManager.getWorkerMap().values()) {
             if (worker.getId() == key) {
                 collectionManager.getWorkerMap().values().remove(worker);
@@ -55,7 +55,7 @@ public class RemoveKey implements Command {
      */
     @Override
     public String argDesc() {
-        return "{key(long value)}";
+        return "{key (long value)}";
     }
 
     /**

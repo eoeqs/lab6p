@@ -1,11 +1,11 @@
 package me.lab6.server.commands;
 
 import me.lab6.common.Response;
-import me.lab6.common.utility.DataType;
 import me.lab6.common.workerRelated.Position;
 import me.lab6.common.workerRelated.Worker;
-import me.lab6.server.commands.Command;
 import me.lab6.server.managers.CollectionManager;
+
+import java.util.List;
 
 public class CountByPosition implements Command {
     CollectionManager collectionManager;
@@ -25,19 +25,15 @@ public class CountByPosition implements Command {
      * @param arg the Position value to count
      */
     @Override
-    public Response execute(String arg) {
-        Long key = Long.parseLong(arg);
-        Position position = Position.valueOf(String.valueOf(key));
-        int count = 0;
-        for (Worker w : collectionManager.getWorkerMap().values()) {
-            if (w.getPosition() == position) {
-                count++;
-            }
-        }
-        if (count == 0) {
+    public Response execute(Object arg) {
+        String argStr = (String) arg;
+        Position position = Position.valueOf(argStr.toUpperCase());
+        List<Worker> filtered = collectionManager.getWorkerMap().values()
+                .stream().filter(w -> w.getPosition() == position).toList();
+        if (filtered.size() == 0) {
             return new Response("The collection doesn't contain elements with such position value.");
         } else {
-            return new Response("The collection contains " + count + " element(s) with position = " + position + ".");
+            return new Response("The collection contains " + filtered.size() + " element(s) with position = " + position + ".");
         }
     }
 
@@ -58,7 +54,7 @@ public class CountByPosition implements Command {
      */
     @Override
     public String argDesc() {
-        return "{position(head_of_department, developer, manager_of_cleaning)}";
+        return "{Position ( " + Position.allPositions() + ")}";
     }
 
     /**

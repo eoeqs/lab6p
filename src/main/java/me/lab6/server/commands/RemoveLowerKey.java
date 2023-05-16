@@ -25,12 +25,11 @@ public class RemoveLowerKey implements Command {
      * @param arg the argument of the command (key of the element to be removed)
      */
     @Override
-    public Response execute(String arg) {
+    public Response execute(Object arg) {
         if (collectionManager.getWorkerMap().isEmpty()) {
             return new Response("This collection is empty.\n");
-
         }
-        Long key = Long.parseLong(arg);
+        Long key = Long.parseLong((String) arg);
         int count = collectionManager.getWorkerMap().size();
         collectionManager.getWorkerMap().entrySet().removeIf(entry -> entry.getKey() < key);
         count -= collectionManager.getWorkerMap().size();
@@ -55,7 +54,7 @@ public class RemoveLowerKey implements Command {
      */
     @Override
     public String argDesc() {
-        return "{key(long value)}";
+        return "{key (long value)}";
     }
 
     /**
