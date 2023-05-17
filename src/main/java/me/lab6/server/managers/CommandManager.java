@@ -1,7 +1,5 @@
 package me.lab6.server.managers;
 
-
-
 import me.lab6.common.Request;
 import me.lab6.common.Response;
 import me.lab6.server.commands.*;
