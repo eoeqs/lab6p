@@ -1,9 +1,11 @@
 package me.lab6.common.workerRelated;
 
+import java.io.Serializable;
+
 /**
  * Represents coordinates with an x and y value.
  */
-public record Coordinates(double x, Double y) {
+public record Coordinates(double x, Double y) implements Serializable {
     /**
      * Returns a string representation of the coordinates in the format "(x, y)".
      *

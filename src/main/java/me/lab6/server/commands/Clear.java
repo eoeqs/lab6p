@@ -23,10 +23,10 @@ public class Clear implements Command {
      */
     @Override
     public Response execute(Object arg) {
-        if (collectionManager.getWorkerMap().isEmpty()) {
+        if (collectionManager.workerMap().isEmpty()) {
             return new Response("This collection is already empty.\n");
         }
-        collectionManager.getWorkerMap().clear();
+        collectionManager.workerMap().clear();
         return new Response("Collection has been cleared.\n");
     }
 

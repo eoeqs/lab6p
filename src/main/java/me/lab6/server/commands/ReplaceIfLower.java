@@ -17,10 +17,10 @@ public class ReplaceIfLower implements Command {
     public Response execute(Object arg) {
         Worker newWorker = (Worker) arg;
         long key = newWorker.getId();
-        if (!collectionManager.getWorkerMap().containsKey(key)) {
+        if (!collectionManager.workerMap().containsKey(key)) {
             return new Response("The collection doesn't contain an element with key = " + key + ".\n");
         }
-        if (collectionManager.getWorkerMap().get(key).compareTo(newWorker) > 0) {
+        if (collectionManager.workerMap().get(key).compareTo(newWorker) > 0) {
             return new Response(collectionManager.replace(newWorker));
         } else {
             return new Response("Described element is equal to or greater than the current one.\n");

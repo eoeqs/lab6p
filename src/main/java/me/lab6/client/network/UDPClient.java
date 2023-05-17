@@ -1,6 +1,7 @@
 package me.lab6.client.network;
 
 import com.google.common.primitives.Bytes;
+import me.lab6.common.ChunkOrganizer;
 import me.lab6.common.Request;
 import me.lab6.common.Response;
 import org.apache.commons.lang3.SerializationUtils;
@@ -33,12 +34,7 @@ public class UDPClient {
     }
 
     private void sendData(byte[] data) throws IOException {
-        byte[][] chunks = new byte[(int) Math.ceil((double) data.length / dataSize)][dataSize];
-        int start = 0;
-        for (int i = 0; i < chunks.length; i++) {
-            chunks[i] = Arrays.copyOfRange(data, start, start + dataSize);
-            start += dataSize;
-        }
+        byte[][] chunks = ChunkOrganizer.divideIntoChunks(data, dataSize);
         for (int i = 0; i < chunks.length; i++) {
             byte[] chunk = chunks[i];
             if (i == chunks.length - 1) {

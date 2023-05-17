@@ -2,6 +2,7 @@ package me.lab6.common.workerRelated;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -9,7 +10,7 @@ import java.util.Objects;
  * The Worker class represents a worker in an organization. It contains information about the worker's ID, name,
  * coordinates, creation date, salary, start date, position, status, and organization.
  */
-public class Worker implements Comparable<Worker> {
+public class Worker implements Comparable<Worker>, Serializable {
     private final long id; // >0, auto-generated, unique
     private String name; // not null, not empty
     private final Coordinates coordinates; // not null

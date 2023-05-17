@@ -1,12 +1,7 @@
 package me.lab6.server.commands;
 
 import me.lab6.common.Response;
-import me.lab6.common.exceptions.ArgMustBeEmptyException;
 import me.lab6.common.utility.Messages;
-import me.lab6.server.managers.CollectionManager;
-import me.lab6.server.managers.FileManager;
-
-import java.io.IOException;
 
 /**
  * A command that stops the application without saving.

@@ -15,6 +15,7 @@ public class Validator {
     private static final Map<String, Limitations> commandsWithArg = new HashMap<>();
 
     static {
+        commandsWithoutArg.put("exit", new Limitations());
         commandsWithoutArg.put("help", new Limitations());
         commandsWithoutArg.put("info", new Limitations());
         commandsWithoutArg.put("show", new Limitations());

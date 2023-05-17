@@ -1,6 +1,7 @@
 package me.lab6.server;
 
 import com.google.common.primitives.Bytes;
+import me.lab6.common.ChunkOrganizer;
 import me.lab6.common.Request;
 import me.lab6.common.Response;
 import me.lab6.server.managers.CommandManager;
@@ -23,8 +24,6 @@ public class UDPServer {
     private final InetSocketAddress address;
     private final CommandManager commandManager;
     private final ServerConsole console;
-    private Runnable afterHook;
-    private boolean running = true;
 
     public UDPServer(InetAddress address, int port, CommandManager commandManager, ServerConsole console) throws SocketException {
         this.address = new InetSocketAddress(address, port);
@@ -36,10 +35,6 @@ public class UDPServer {
 
     public InetSocketAddress getAddress() {
         return address;
-    }
-
-    public void setAfterHook(Runnable afterHook) {
-        this.afterHook = afterHook;
     }
 
     public Pair<Byte[], SocketAddress> receiveData() throws IOException {
@@ -60,12 +55,7 @@ public class UDPServer {
     }
 
     public void sendData(byte[] data, SocketAddress address) throws IOException {
-        byte[][] chunks = new byte[(int) Math.ceil((double) data.length / dataSize)][dataSize];
-        int start = 0;
-        for (int i = 0; i < chunks.length; i++) {
-            chunks[i] = Arrays.copyOfRange(data, start, start + dataSize);
-            start += dataSize;
-        }
+        byte[][] chunks = ChunkOrganizer.divideIntoChunks(data, dataSize);
         for (int i = 0; i < chunks.length; i++) {
             byte[] chunk = chunks[i];
             if (i == chunks.length - 1) {
@@ -93,8 +83,8 @@ public class UDPServer {
     }
 
     public void run() {
-        while (running) {
-            console.handleServerInput();
+        System.out.println("Server started.");
+        while (true) {
             Pair<Byte[], SocketAddress> pair;
             try {
                 pair = receiveData();
@@ -121,9 +111,6 @@ public class UDPServer {
             Response response = null;
             try {
                 response = commandManager.handleRequest(request);
-                if (afterHook != null) {
-                    afterHook.run();
-                }
             } catch (Exception e) {
                 System.out.println("Failed to execute command: " + e.getMessage());
             }
@@ -134,6 +121,9 @@ public class UDPServer {
                 System.out.println("Failed to send response due to an IO error.");
             }
             disconnect();
+            if (console.handleServerInput()) {
+                break;
+            }
         }
         close();
     }

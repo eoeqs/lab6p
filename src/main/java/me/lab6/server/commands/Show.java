@@ -5,8 +5,6 @@ import me.lab6.common.Response;
 import me.lab6.common.workerRelated.Worker;
 import me.lab6.server.managers.CollectionManager;
 
-import java.util.stream.Collectors;
-
 /**
  * Command to print out all elements of the collection.
  * Implements the {@link Command} interface.
@@ -31,18 +29,14 @@ public class Show implements Command {
      */
     @Override
     public Response execute(Object arg) {
-        if (collectionManager.getWorkerMap().size() == 0) {
+        if (collectionManager.workerMap().size() == 0) {
             return new Response("This collection is empty.");
         }
         StringBuilder sb = new StringBuilder();
-        for (Worker w : collectionManager.getWorkerMap().values()) {
+        for (Worker w : collectionManager.workerMap().values()) {
             sb.append(w).append("\n");
         }
         return new Response(sb.toString());
-//        return new Response(collectionManager.getWorkerMap().entrySet()
-//                .stream()
-//                .map(entry -> entry.getKey() + " -> " + entry.getValue())
-//                .collect(Collectors.joining("\n")));
     }
 
     /**

@@ -28,7 +28,7 @@ public class CountByPosition implements Command {
     public Response execute(Object arg) {
         String argStr = (String) arg;
         Position position = Position.valueOf(argStr.toUpperCase());
-        List<Worker> filtered = collectionManager.getWorkerMap().values()
+        List<Worker> filtered = collectionManager.workerMap().values()
                 .stream().filter(w -> w.getPosition() == position).toList();
         if (filtered.size() == 0) {
             return new Response("The collection doesn't contain elements with such position value.");

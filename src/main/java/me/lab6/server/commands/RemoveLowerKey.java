@@ -26,13 +26,13 @@ public class RemoveLowerKey implements Command {
      */
     @Override
     public Response execute(Object arg) {
-        if (collectionManager.getWorkerMap().isEmpty()) {
+        if (collectionManager.workerMap().isEmpty()) {
             return new Response("This collection is empty.\n");
         }
         Long key = Long.parseLong((String) arg);
-        int count = collectionManager.getWorkerMap().size();
-        collectionManager.getWorkerMap().entrySet().removeIf(entry -> entry.getKey() < key);
-        count -= collectionManager.getWorkerMap().size();
+        int count = collectionManager.workerMap().size();
+        collectionManager.workerMap().entrySet().removeIf(entry -> entry.getKey() < key);
+        count -= collectionManager.workerMap().size();
         return new Response(count + " elements were removed from the collection.\n");
 
     }

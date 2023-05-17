@@ -1,9 +1,11 @@
 package me.lab6.common.workerRelated;
 
+import java.io.Serializable;
+
 /**
  * Represents an address with a street and a zip code.
  */
-public record Address(String street, String zipCode) {
+public record Address(String street, String zipCode) implements Serializable {
     /**
      * Returns a string representation of the address in the format "(zipCode, street)".
      *

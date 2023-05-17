@@ -16,7 +16,7 @@ public class Insert implements Command {
     public Response execute(Object arg) {
         Worker worker = (Worker) arg;
         long key = worker.getId();
-        if (collectionManager.getWorkerMap().containsKey(key)) {
+        if (collectionManager.workerMap().containsKey(key)) {
             return new Response("The collection already contains an element with key = " + key + ".\n");
         }
         return new Response(collectionManager.add(worker));

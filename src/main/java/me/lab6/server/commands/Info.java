@@ -32,11 +32,11 @@ public class Info implements Command {
     public Response execute(Object arg) {
         StringBuilder sb = new StringBuilder("This collection stores Worker elements in a HashMap.\n");
         sb.append("The workers' IDs match the map's keys.\n");
-        sb.append(collectionManager.getWorkerMap().isEmpty() ? "This collection is yet empty.\n" : "Currently there are " +
-                collectionManager.getWorkerMap().size() + " elements in this collection.\n");
-        if (!collectionManager.getWorkerMap().isEmpty()) {
+        sb.append(collectionManager.workerMap().isEmpty() ? "This collection is yet empty.\n" : "Currently there are " +
+                collectionManager.workerMap().size() + " elements in this collection.\n");
+        if (!collectionManager.workerMap().isEmpty()) {
             int salarySum = 0;
-            for (Worker w : collectionManager.getWorkerMap().values()) {
+            for (Worker w : collectionManager.workerMap().values()) {
                 salarySum += w.getSalary();
             }
             sb.append("The sum of all workers' salaries is ").append(salarySum).append("\n");

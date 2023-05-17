@@ -2,8 +2,6 @@ package me.lab6.server.commands;
 
 
 import me.lab6.common.Response;
-import me.lab6.common.exceptions.ExitException;
-import me.lab6.common.utility.DataType;
 import me.lab6.common.workerRelated.Worker;
 import me.lab6.server.managers.CollectionManager;
 
@@ -35,7 +33,7 @@ public class Update implements Command {
     public Response execute(Object arg) {
         Worker newWorker = (Worker) arg;
         long key = newWorker.getId();
-        if (!collectionManager.getWorkerMap().containsKey(key)) {
+        if (!collectionManager.workerMap().containsKey(key)) {
             return new Response("The collection doesn't contain an element with key = " + key + ".\n");
         } else {
             return new Response(collectionManager.replace(newWorker));

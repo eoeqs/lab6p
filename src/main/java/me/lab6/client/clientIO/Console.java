@@ -15,7 +15,6 @@ import java.util.Scanner;
 
 public class Console {
     private final Scanner scanner = new Scanner(System.in);
-    private static boolean mode;
     private final UDPClient client;
     private final EntityConstructor constructor;
 
@@ -87,7 +86,7 @@ public class Console {
                     }
                 }
                 if (response != null) {
-                    System.out.println();
+                    System.out.println(response);
                     if (response.message().equals(Messages.goodbye())) {
                         System.exit(0);
                     }

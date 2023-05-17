@@ -1,10 +1,12 @@
 package me.lab6.common.workerRelated;
 
+import java.io.Serializable;
+
 /**
  * The Position enum class defines the possible positions that a worker can hold. These positions include Head of
  * Department, Developer, and Manager of Cleaning.
  */
-public enum Position {
+public enum Position implements Serializable {
     /**
      * HEAD_OF_DEPARTMENT Position
      */

@@ -32,7 +32,7 @@ public class MinByStatus implements Command {
     @Override
     public Response execute(Object arg) {
         Status minStatus = Status.minStatus();
-        List<Worker> filtered = collectionManager.getWorkerMap().values()
+        List<Worker> filtered = collectionManager.workerMap().values()
                 .stream().filter(w -> w.getStatus() == minStatus).toList();
         StringBuilder sb = new StringBuilder("The minimal Status value is ").append(minStatus);
         if (filtered.size() == 0) {

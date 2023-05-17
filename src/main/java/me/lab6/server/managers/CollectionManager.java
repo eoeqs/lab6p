@@ -11,34 +11,16 @@ import java.util.HashMap;
  * ColMan is a class that manages the collection of Worker objects. It stores the workerMap, which is a HashMap where the
  * keys are long values and the values are Worker objects, and the creationDate, which is a String value.
  */
-public class CollectionManager {
-    private HashMap<Long, Worker> workerMap;
-
-    /**
-     * The constructor of the ColMan class. It initializes the workerMap and creationDate fields.
-     *
-     * @param workerMap    a HashMap where the keys are long values and the values are Worker objects.
-     */
-    public CollectionManager(HashMap<Long, Worker> workerMap) {
-        this.workerMap = workerMap;
-    }
+public record CollectionManager(HashMap<Long, Worker> workerMap) {
 
     /**
      * Getter method for the workerMap field.
      *
      * @return the HashMap where the keys are long values and the values are Worker objects.
      */
-    public HashMap<Long, Worker> getWorkerMap() {
+    @Override
+    public HashMap<Long, Worker> workerMap() {
         return workerMap;
-    }
-
-    /**
-     * Setter method for the workerMap field.
-     *
-     * @param workerMap a HashMap where the keys are long values and the values are Worker objects.
-     */
-    public void setWorkerMap(HashMap<Long, Worker> workerMap) {
-        this.workerMap = workerMap;
     }
 
     /**
@@ -64,6 +46,7 @@ public class CollectionManager {
                 worker + "\n";
     }
 
+    @Deprecated
     public static HashMap<Long, Worker> tempWorkerMap() {
         HashMap<Long, Worker> map = new HashMap<>();
         Worker one = new Worker(1, "One", new Coordinates(1, 2D), LocalDate.now(), 9000,
@@ -93,5 +76,4 @@ public class CollectionManager {
         map.put(five.getId(), five);
         return map;
     }
-
 }

@@ -1,10 +1,12 @@
 package me.lab6.common.workerRelated;
 
+import java.io.Serializable;
+
 /**
  * The Status enum class defines the possible statuses that a worker can hold. These statuses include Fired, Hired,
  * Recommended for Promotion, and Regular.
  */
-public enum Status {
+public enum Status implements Serializable {
     /**
      * FIRED Status
      */

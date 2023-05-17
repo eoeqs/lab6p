@@ -31,7 +31,7 @@ public class FilterGreaterThanOrganization implements Command {
     @Override
     public Response execute(Object arg) {
         Organization organization = (Organization) arg;
-        List<Worker> filtered = collectionManager.getWorkerMap().values()
+        List<Worker> filtered = collectionManager.workerMap().values()
                 .stream().filter(w -> w.getOrganization().compareTo(organization) > 0).toList();
         if (filtered.size() == 0) {
             return new Response("The collection doesn't contain elements with organization value greater than given.\n");

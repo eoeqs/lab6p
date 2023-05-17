@@ -1,11 +1,13 @@
 package me.lab6.common.workerRelated;
 
+import java.io.Serializable;
+
 /**
  * Represents an organization with a full name, annual turnover, employees count, and postal address.
  * Implements the Comparable interface for sorting based on annual turnover, employees count, and full name.
  */
 public record Organization(String fullName, Integer annualTurnover, Long employeesCount,
-                           Address postalAddress) implements Comparable<Organization> {
+                           Address postalAddress) implements Comparable<Organization>, Serializable {
     /**
      * Returns a string representation of the organization in the format "fullName(annual_turnover=annualTurnover;
      * employee_count=employeesCount; postal_address=postalAddress)".

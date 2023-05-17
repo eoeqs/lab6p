@@ -6,7 +6,10 @@ public record Request(String command, Object argument) implements Serializable {
 
     @Override
     public String toString() {
-        return "Command: '" + command + "'; arg: " + argument.toString();
+        if (argument != null) {
+            return "Command: '" + command + "'; arg: " + argument();
+        }
+        return "Command: '" + command + "'";
     }
 
 }

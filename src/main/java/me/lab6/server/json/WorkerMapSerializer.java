@@ -27,7 +27,7 @@ public class WorkerMapSerializer implements JsonSerializer<HashMap<Long, Worker>
     public JsonElement serialize(HashMap<Long, Worker> src, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject result = new JsonObject();
         for (Worker w : src.values()) {
-            result.add(w.getId() + "", context.serialize(w));
+            result.add(String.valueOf(w.getId()), context.serialize(w));
         }
         return result;
     }

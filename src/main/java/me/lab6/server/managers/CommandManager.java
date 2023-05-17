@@ -4,7 +4,6 @@ package me.lab6.server.managers;
 
 import me.lab6.common.Request;
 import me.lab6.common.Response;
-import me.lab6.common.exceptions.ExitException;
 import me.lab6.server.commands.*;
 
 import java.io.IOException;
@@ -54,11 +53,11 @@ public class CommandManager {
         this.commandMap = commandMap;
     }
 
-    public Response handleRequest(Request request) throws ExitException {
+    public Response handleRequest(Request request) {
         return executeCommand(request.command(), request.argument());
     }
 
-    public Response executeCommand(String command, Object arg) throws ExitException {
+    public Response executeCommand(String command, Object arg) {
         Response response = commandMap.get(command).execute(arg);
         history.add(command);
         if (history.size() > 6) {

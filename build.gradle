@@ -22,7 +22,7 @@ test {
     useJUnitPlatform()
 }
 
-tasks.register('serverJar', Jar) {
+tasks.register('serverBuild', Jar) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from(sourceSets.main.output) { include "**" }
     from {
@@ -34,11 +34,11 @@ tasks.register('serverJar', Jar) {
         attributes 'Main-Class': 'me.lab6.server.ServerMain'
     }
     destinationDirectory = file("$rootDir/jar/server")
-    archivesBaseName = "lab6"
+    archivesBaseName = "lab6server"
     exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
 }
 
-tasks.register('clientJar', Jar) {
+tasks.register('clientBuild', Jar) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from(sourceSets.main.output) { include "**" }
     from {
@@ -50,7 +50,7 @@ tasks.register('clientJar', Jar) {
         attributes 'Main-Class': 'me.lab6.client.ClientMain'
     }
     destinationDirectory = file("$rootDir/jar/client")
-    archivesBaseName = "lab6"
+    archivesBaseName = "lab6client"
     exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
 }
 

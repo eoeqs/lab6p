@@ -29,9 +29,9 @@ public class RemoveKey implements Command {
     @Override
     public Response execute(Object arg) {
         long key = Long.parseLong((String) arg);
-        for (Worker worker : collectionManager.getWorkerMap().values()) {
+        for (Worker worker : collectionManager.workerMap().values()) {
             if (worker.getId() == key) {
-                collectionManager.getWorkerMap().values().remove(worker);
+                collectionManager.workerMap().values().remove(worker);
                 return new Response("Collection element with key " + key + " has been successfully deleted.\n");
             }
         }
