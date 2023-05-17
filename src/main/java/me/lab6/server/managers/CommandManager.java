@@ -7,6 +7,7 @@ import me.lab6.common.Response;
 import me.lab6.common.exceptions.ExitException;
 import me.lab6.server.commands.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,8 @@ import java.util.Map;
 public class CommandManager {
     private final Map<String, Command> commandMap;
     private final ArrayList<String> history;
+    private final FileManager fileManager;
+    private final CollectionManager collectionManager;
 
     {
         history = new ArrayList<>();
@@ -30,6 +33,8 @@ public class CommandManager {
      * @param fileManager The File Manager object.
      */
     public CommandManager(CollectionManager collectionManager, FileManager fileManager) {
+        this.fileManager = fileManager;
+        this.collectionManager = collectionManager;
         Map<String, Command> commandMap = new HashMap<>();
         commandMap.put("info", new Info(collectionManager));
         commandMap.put("show", new Show(collectionManager));
@@ -62,11 +67,8 @@ public class CommandManager {
         return response;
     }
 
-    public void save(){
-        commandMap.get("save").execute("");
+    public void save() throws IOException {
+        fileManager.writeWorkersToFile(collectionManager);
     }
 
-    public void exit() {
-        commandMap.get("exit").execute("");
-    }
 }

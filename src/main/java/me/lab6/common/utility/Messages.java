@@ -26,4 +26,16 @@ public class Messages {
     public static String serverCommunicationError() {
         return "There was an error during the communication with server. Please, try again.";
     }
+
+    public static String saved() {
+        return "The collection was successfully saved to " + System.getenv("workers") + ".";
+    }
+
+    public static String failedToSave() {
+        return "Failed to save the collection to" + System.getenv("workers") + ".";
+    }
+
+    public static String serverGoodbye() {
+        return "Shutting down.\nGoodbye!";
+    }
 }

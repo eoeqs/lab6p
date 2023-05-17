@@ -22,12 +22,14 @@ public class UDPServer {
     private final DatagramSocket socket;
     private final InetSocketAddress address;
     private final CommandManager commandManager;
+    private final ServerConsole console;
     private Runnable afterHook;
     private boolean running = true;
 
-    public UDPServer(InetAddress address, int port, CommandManager commandManager) throws SocketException {
+    public UDPServer(InetAddress address, int port, CommandManager commandManager, ServerConsole console) throws SocketException {
         this.address = new InetSocketAddress(address, port);
         this.commandManager = commandManager;
+        this.console = console;
         socket = new DatagramSocket(getAddress());
         socket.setReuseAddress(true);
     }
@@ -92,6 +94,7 @@ public class UDPServer {
 
     public void run() {
         while (running) {
+            console.handleServerInput();
             Pair<Byte[], SocketAddress> pair;
             try {
                 pair = receiveData();

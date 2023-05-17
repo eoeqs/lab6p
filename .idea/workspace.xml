@@ -4,29 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13cb3cb9-1653-4ee4-a419-cb2b52fe755a" name="Changes" comment="Client's request sending &amp; response receiving + printing response">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_05_2023_17_19__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_05_2023_17_19__Changes_.xml" afterDir="false" />
+    <list default="true" id="13cb3cb9-1653-4ee4-a419-cb2b52fe755a" name="Changes" comment="Commands (except for execute_script)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Worker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/ServerConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/ServerConsole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/ServerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Clear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/CountByPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/CountByPosition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Exit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/History.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Insert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/MinByStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/MinByStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveLowerKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveLowerKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/ReplaceIfLower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/ReplaceIfLower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Show.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Update.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/UDPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/UDPServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CommandManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,6 +86,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -111,7 +95,7 @@
       <recent name="K:\Java\Yebisu\Labs\lab6p\src\main\java\me\lab6\server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientMain">
+  <component name="RunManager">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="me.lab6.client.ClientMain" />
       <module name="untitled.main" />
@@ -216,7 +200,11 @@
       <workItem from="1684239039680" duration="4256000" />
       <workItem from="1684247701835" duration="5603000" />
       <workItem from="1684253339576" duration="3629000" />
-      <workItem from="1684272098959" duration="2953000" />
+      <workItem from="1684272098959" duration="4154000" />
+      <workItem from="1684320000047" duration="1713000" />
+      <workItem from="1684322650157" duration="90000" />
+      <workItem from="1684322774318" duration="64000" />
+      <workItem from="1684322856323" duration="2862000" />
     </task>
     <task id="LOCAL-00001" summary="validation, build tasks and slight refactoring">
       <created>1684168249086</created>
@@ -239,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684227194340</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Commands (except for execute_script)">
+      <created>1684276251993</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684276251993</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,6 +245,7 @@
     <MESSAGE value="validation, build tasks and slight refactoring" />
     <MESSAGE value="EntityConstructor, changed validation logic a little" />
     <MESSAGE value="Client's request sending &amp; response receiving + printing response" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client's request sending &amp; response receiving + printing response" />
+    <MESSAGE value="Commands (except for execute_script)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commands (except for execute_script)" />
   </component>
 </project>

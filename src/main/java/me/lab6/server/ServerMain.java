@@ -16,11 +16,10 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class ServerMain {
-    private final static int PORT = 26566;
+    private final static int port = 26566;
 
     public static void main(String[] args) {
         String fileName = System.getenv("workers");
-        fileName = "C:\\Users\\fckgp\\IdeaProjects\\untitled\\file.json";
         if (fileName != null) {
             FileManager fileManager = new FileManager(fileName);
             try {
@@ -52,7 +51,7 @@ public class ServerMain {
         try {
             Scanner scanner = new Scanner(System.in);
             ServerConsole serverConsole = new ServerConsole(scanner, commandManager);
-            var server = new UDPDatagramServer(new InetSocketAddress(InetAddress.getLocalHost(), PORT), serverConsole);
+            UDPServer server = new UDPServer(InetAddress.getLocalHost(), port, commandManager, serverConsole);
             server.run();
 
         } catch (IOException e) {
