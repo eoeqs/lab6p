@@ -1,5 +1,7 @@
 package me.lab6.server.network;
 
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
 import com.google.common.primitives.Bytes;
 import me.lab6.common.utility.ChunkOrganizer;
 import me.lab6.common.network.Request;
@@ -11,11 +13,14 @@ import org.apache.commons.lang3.SerializationException;
 import org.apache.commons.lang3.SerializationUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
+import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.*;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
+import java.util.logging.FileHandler;
 
 public class UDPServer {
 
@@ -25,13 +30,19 @@ public class UDPServer {
     private final InetSocketAddress address;
     private final CommandManager commandManager;
     private final ServerConsole console;
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(UDPServer.class);
+
+
 
     public UDPServer(InetAddress address, int port, CommandManager commandManager, ServerConsole console) throws SocketException {
+
+        logger.setLevel(Level.INFO);
         this.address = new InetSocketAddress(address, port);
         this.commandManager = commandManager;
         this.console = console;
         socket = new DatagramSocket(getAddress());
         socket.setReuseAddress(true);
+        socket.setSoTimeout(4000);
     }
 
     public InetSocketAddress getAddress() {
@@ -47,8 +58,12 @@ public class UDPServer {
             DatagramPacket packet = new DatagramPacket(data, packageSize);
             socket.receive(packet);
             address = packet.getSocketAddress();
+            logger.info("Received \"" + new String(data) + "\" from " + packet.getAddress());
+            logger.info("Last byte: " + data[data.length - 1]);
             if (data[data.length - 1] == 1) {
                 received = true;
+                logger.info("Receiving data from " + packet.getAddress() + " has just ended.");
+
             }
             result = Bytes.concat(result, Arrays.copyOf(data, data.length - 1));
         }
@@ -57,18 +72,26 @@ public class UDPServer {
 
     public void sendData(byte[] data, SocketAddress address) throws IOException {
         byte[][] chunks = ChunkOrganizer.divideIntoChunks(data, dataSize);
+        logger.info("Sending " + chunks.length + " chunks...");
+
         for (int i = 0; i < chunks.length; i++) {
             byte[] chunk = chunks[i];
             if (i == chunks.length - 1) {
                 byte[] lastChunk = Bytes.concat(chunk, new byte[]{1});
                 DatagramPacket packet = new DatagramPacket(lastChunk, packageSize, address);
                 socket.send(packet);
+                logger.info("Last chunk of size " + chunk.length + " has been sent to server.");
+
             } else {
                 DatagramPacket packet = new DatagramPacket(
                         ByteBuffer.allocate(packageSize).put(chunk).array(), packageSize, address);
                 socket.send(packet);
+                logger.info("Chunk of size " + chunk.length + " has been sent to server.");
+
             }
         }
+        logger.info("Finished sending data.");
+
     }
 
     public void connect(SocketAddress address) throws SocketException {
@@ -84,12 +107,13 @@ public class UDPServer {
     }
 
     public void run() {
-        System.out.println("Server started.");
+        logger.info("Server started at " + address);
         while (true) {
             Pair<Byte[], SocketAddress> pair;
             try {
                 pair = receiveData();
             } catch (Exception e) {
+                logger.error("There was an error receiving data: " + e);
                 disconnect();
                 continue;
             }
@@ -97,15 +121,16 @@ public class UDPServer {
             SocketAddress address = pair.getValue();
             try {
                 connect(address);
-                System.out.println("Connected to " + address);
+                logger.info("Connected to " + address);
             } catch (Exception e) {
-                System.out.println("FAILED to connect: " + e.getMessage());
+                logger.error("FAILED to connect: " + e.getMessage());
             }
             Request request;
             try {
                 request = SerializationUtils.deserialize(ArrayUtils.toPrimitive(clientData));
+                logger.info("Processing " + request + " from " + address);
             } catch (SerializationException e) {
-                System.out.println("Failed to deserialize received data.");
+                logger.error("Failed to deserialize received data.");
                 disconnect();
                 continue;
             }
@@ -113,15 +138,20 @@ public class UDPServer {
             try {
                 response = commandManager.handleRequest(request);
             } catch (Exception e) {
-                System.out.println("Failed to execute command: " + e.getMessage());
+                logger.error("Failed to execute command: " + e.getMessage());
             }
             byte[] data = SerializationUtils.serialize(response);
+            logger.info("Response: " + response);
+
             try {
                 sendData(data, address);
+                logger.info("Response has been sent to client " + address);
             } catch (Exception e) {
-                System.out.println("Failed to send response due to an IO error.");
+                logger.error("Failed to send response due to an IO error.");
             }
             disconnect();
+            logger.info("Disconnecting from client " + address);
+
             if (console.handleServerInput()) {
                 break;
             }

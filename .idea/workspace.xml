@@ -82,6 +82,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="untitled" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="untitled" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="other" type="c8890929:TasksNode$1" />
               </path>
             </expand>
@@ -124,7 +130,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -159,6 +165,28 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="lab6p [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
     </configuration>
     <configuration name="lab6p [clientBuild]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -204,8 +232,16 @@
       <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.ClientMain" />
+      <item itemvalue="Application.ServerMain" />
+      <item itemvalue="Gradle.lab6p [build]" />
+      <item itemvalue="Gradle.lab6p [clientBuild]" />
+      <item itemvalue="Gradle.lab6p [serverBuild]" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.lab6p [build]" />
         <item itemvalue="Gradle.lab6p [serverBuild]" />
         <item itemvalue="Gradle.lab6p [clientBuild]" />
         <item itemvalue="Application.ServerMain" />
@@ -238,6 +274,8 @@
       <workItem from="1684343924163" duration="7564000" />
       <workItem from="1684391717939" duration="14377000" />
       <workItem from="1684417844971" duration="3155000" />
+      <workItem from="1684343565002" duration="3636000" />
+      <workItem from="1684397036984" duration="9545000" />
     </task>
     <task id="LOCAL-00001" summary="validation, build tasks and slight refactoring">
       <created>1684168249086</created>
@@ -287,6 +325,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="validation, build tasks and slight refactoring" />
@@ -296,5 +337,17 @@
     <MESSAGE value="ServerMain &amp; ServerConsole" />
     <MESSAGE value="Basically everything's done except for execute_script (fuck execute_script)" />
     <option name="LAST_COMMIT_MESSAGE" value="Basically everything's done except for execute_script (fuck execute_script)" />
+    <option name="LAST_COMMIT_MESSAGE" value="ServerMain &amp; ServerConsole" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/me/lab6/server/UDPServer.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
