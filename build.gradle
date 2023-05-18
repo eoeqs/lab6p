@@ -33,9 +33,9 @@ tasks.register('serverBuild', Jar) {
     manifest {
         attributes 'Main-Class': 'me.lab6.server.ServerMain'
     }
-    destinationDirectory = file("$rootDir/jar/server")
+    destinationDirectory = file("$rootDir/jar")
     archivesBaseName = "lab6server"
-    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+    exclude ("scr/main/java/me/lab6/client/**")
 }
 
 tasks.register('clientBuild', Jar) {
@@ -49,9 +49,9 @@ tasks.register('clientBuild', Jar) {
     manifest {
         attributes 'Main-Class': 'me.lab6.client.ClientMain'
     }
-    destinationDirectory = file("$rootDir/jar/client")
+    destinationDirectory = file("$rootDir/jar")
     archivesBaseName = "lab6client"
-    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+    exclude ("scr/main/java/me/lab6/server/**")
 }
 
 compileJava.options.encoding = 'UTF-8'

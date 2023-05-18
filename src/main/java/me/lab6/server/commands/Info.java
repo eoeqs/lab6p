@@ -1,7 +1,7 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.Response;
+import me.lab6.common.network.Response;
 import me.lab6.common.workerRelated.Worker;
 import me.lab6.server.managers.CollectionManager;
 
@@ -35,10 +35,7 @@ public class Info implements Command {
         sb.append(collectionManager.workerMap().isEmpty() ? "This collection is yet empty.\n" : "Currently there are " +
                 collectionManager.workerMap().size() + " elements in this collection.\n");
         if (!collectionManager.workerMap().isEmpty()) {
-            int salarySum = 0;
-            for (Worker w : collectionManager.workerMap().values()) {
-                salarySum += w.getSalary();
-            }
+            int salarySum = collectionManager.workerMap().values().stream().mapToInt(Worker::getSalary).sum();
             sb.append("The sum of all workers' salaries is ").append(salarySum).append("\n");
         }
         return new Response(sb.toString());

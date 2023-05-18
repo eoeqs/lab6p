@@ -1,7 +1,7 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.Response;
+import me.lab6.common.network.Response;
 
 import java.util.ArrayList;
 
@@ -30,16 +30,14 @@ public class Help implements Command {
     @Override
     public Response execute(Object arg) {
 
-        StringBuilder sb = new StringBuilder(name());
-        sb.append(" - ").append(desc()).append("\n");
-        for (Command command : commands) {
-            sb.append(command.name());
-            if (command.argDesc() != null) {
-                sb.append(" ").append(command.argDesc());
+        StringBuilder sb = new StringBuilder(name()).append(" - ").append(desc()).append("\n");
+        commands.forEach(c -> {
+            sb.append(c.name());
+            if (c.argDesc() != null) {
+                sb.append(" ").append(c.argDesc());
             }
-            sb.append(" - ").append(command.desc()).append("\n");
-        }
-
+            sb.append(" - ").append(c.desc()).append("\n");
+        });
         return new Response(sb.toString());
     }
 

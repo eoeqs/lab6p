@@ -1,6 +1,6 @@
 package me.lab6.server.commands;
 
-import me.lab6.common.Response;
+import me.lab6.common.network.Response;
 import me.lab6.common.utility.Messages;
 
 /**

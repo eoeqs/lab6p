@@ -1,6 +1,6 @@
 package me.lab6.server.commands;
 
-import me.lab6.common.Response;
+import me.lab6.common.network.Response;
 import me.lab6.common.workerRelated.Organization;
 import me.lab6.common.workerRelated.Worker;
 import me.lab6.server.managers.CollectionManager;
@@ -37,9 +37,7 @@ public class FilterGreaterThanOrganization implements Command {
             return new Response("The collection doesn't contain elements with organization value greater than given.\n");
         } else {
             StringBuilder sb = new StringBuilder();
-            for (Worker w : filtered) {
-                sb.append(w).append("\n");
-            }
+            filtered.forEach(worker -> sb.append(worker).append("\n"));
             return new Response(sb.toString());
         }
     }

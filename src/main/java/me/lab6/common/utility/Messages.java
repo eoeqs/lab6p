@@ -38,4 +38,16 @@ public class Messages {
     public static String serverGoodbye() {
         return "Shutting down.\nGoodbye!";
     }
+
+    public static String invalidScript() {
+        return "Given script or some of the nested scripts is invalid (incorrect commands, element attributes, etc.).";
+    }
+
+    public static String fileNotFound() {
+        return "File with the given name or some of the nested script files do not exist or can't be accessed.";
+    }
+
+    public static String scriptRecursion() {
+        return "Recursion detected, the script can't be executed.";
+    }
 }

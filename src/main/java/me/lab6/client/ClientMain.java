@@ -1,7 +1,7 @@
 package me.lab6.client;
 
 
-import me.lab6.client.clientIO.Console;
+import me.lab6.client.io.Console;
 import me.lab6.client.network.UDPClient;
 
 import java.net.InetAddress;

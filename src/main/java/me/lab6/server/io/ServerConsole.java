@@ -1,4 +1,4 @@
-package me.lab6.server;
+package me.lab6.server.io;
 
 import me.lab6.common.utility.Messages;
 import me.lab6.server.managers.CommandManager;
@@ -10,12 +10,17 @@ import java.util.Scanner;
 public class ServerConsole {
     private final Scanner scanner;
     private final CommandManager commandManager;
-    public ServerConsole(Scanner scanner, CommandManager commandManager){
+
+    public ServerConsole(Scanner scanner, CommandManager commandManager) {
         this.scanner = scanner;
         this.commandManager = commandManager;
     }
+
     public boolean handleServerInput() {
         try {
+            if (System.in.available() < 0) {
+                Thread.sleep(5000);
+            }
             if (System.in.available() > 0) {
                 String input = scanner.nextLine().trim();
                 switch (input) {
@@ -30,7 +35,7 @@ public class ServerConsole {
                         }
                     }
                     case "exit" -> {
-                        return exit();
+                        return confirmExit();
                     }
                     default -> {
                         System.out.println("You can only use 'save' and 'exit' in the Server console.");
@@ -41,30 +46,35 @@ public class ServerConsole {
         } catch (IOException e) {
             return false;
         } catch (NoSuchElementException e) {
-            return exit();
+            return true;
+        } catch (InterruptedException ignored) {
         }
         return false;
     }
 
-    private boolean exit() {
-        try {
-            commandManager.save();
-            System.out.println(Messages.saved());
-            System.out.println(Messages.serverGoodbye());
+    private boolean confirmExit() {
+        if (commandManager.save()) {
             return true;
-        } catch (Exception e) {
+        } else {
             System.out.println(Messages.failedToSave());
             System.out.println("Exit anyway? (Enter anything to exit, press Enter without typing anything to cancel)");
             try {
                 if (!scanner.nextLine().isEmpty()) {
-                    System.out.println(Messages.serverGoodbye());
                     return true;
                 }
             } catch (NoSuchElementException n) {
-                System.out.println(Messages.serverGoodbye());
                 return true;
             }
         }
         return false;
+    }
+
+    public void exit() {
+        if (commandManager.save()) {
+            System.out.println(Messages.saved());
+        } else {
+            System.out.println(Messages.failedToSave());
+        }
+        System.out.println(Messages.serverGoodbye());
     }
 }

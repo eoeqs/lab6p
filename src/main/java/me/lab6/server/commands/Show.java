@@ -1,9 +1,11 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.Response;
+import me.lab6.common.network.Response;
 import me.lab6.common.workerRelated.Worker;
 import me.lab6.server.managers.CollectionManager;
+
+import java.util.Collection;
 
 /**
  * Command to print out all elements of the collection.
@@ -29,13 +31,12 @@ public class Show implements Command {
      */
     @Override
     public Response execute(Object arg) {
-        if (collectionManager.workerMap().size() == 0) {
+        Collection<Worker> workers = collectionManager.workerMap().values();
+        if (workers.size() == 0) {
             return new Response("This collection is empty.");
         }
         StringBuilder sb = new StringBuilder();
-        for (Worker w : collectionManager.workerMap().values()) {
-            sb.append(w).append("\n");
-        }
+        workers.forEach(w -> sb.append(w).append("\n"));
         return new Response(sb.toString());
     }
 

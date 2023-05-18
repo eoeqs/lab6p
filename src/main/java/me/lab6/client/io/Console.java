@@ -1,14 +1,18 @@
-package me.lab6.client.clientIO;
+package me.lab6.client.io;
 
 
 import me.lab6.client.network.UDPClient;
-import me.lab6.common.Request;
-import me.lab6.common.Response;
+import me.lab6.client.utility.ScriptValidator;
+import me.lab6.client.exceptions.InvalidScriptException;
+import me.lab6.client.exceptions.ScriptRecursionException;
+import me.lab6.common.network.Request;
+import me.lab6.common.network.Response;
 import me.lab6.common.utility.Messages;
 import me.lab6.common.utility.Validator;
 import me.lab6.common.workerRelated.Organization;
 import me.lab6.common.workerRelated.Worker;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -26,7 +30,7 @@ public class Console {
     public void interact() {
         System.out.println(Messages.hello());
         while (true) {
-            System.out.print("> ");
+            System.out.print("$ ");
             try {
                 handleInput();
             } catch (NoSuchElementException e) {
@@ -44,11 +48,11 @@ public class Console {
         String inputStr = getInput();
         if (!inputStr.isBlank()) {
             String[] input = inputStr.split("\\s+", 2);
-            input[0] = input[0].toLowerCase();
             String validationResult = Validator.validateCommandAndArg(input);
             if (validationResult == null) {
                 Response response = null;
-                if (input[0].equals("insert") || input[0].equals("replace_if_lower") || input[0].equals("update")) {
+                if (input[0].equalsIgnoreCase("insert") || input[0].equalsIgnoreCase("replace_if_lower")
+                        || input[0].equalsIgnoreCase("update")) {
                     try {
                         Worker worker = constructor.constructWorker(Long.parseLong(input[1]));
                         try {
@@ -59,7 +63,7 @@ public class Console {
                     } catch (NoSuchElementException e) {
                         System.out.println("Worker description process was canceled.");
                     }
-                } else if (input[0].equals("filter_greater_than_organization")) {
+                } else if (input[0].equalsIgnoreCase("filter_greater_than_organization")) {
                     try {
                         Organization organization = constructor.constructOrganization();
                         try {
@@ -70,7 +74,20 @@ public class Console {
                     } catch (NoSuchElementException e) {
                         System.out.println("Organization description process was canceled.");
                     }
-                } else {
+                } else if (input[0].equalsIgnoreCase("execute_script")) {
+                    try {
+                        response = getResponseForRequest(input[0], new ScriptValidator(input[1]).getFinalScript());
+                    } catch (InvalidScriptException e) {
+                        System.out.println(Messages.invalidScript());
+                    } catch (FileNotFoundException e) {
+                        System.out.println(Messages.fileNotFound());
+                    } catch (ScriptRecursionException e) {
+                        System.out.println(Messages.scriptRecursion());
+                    } catch (IOException e) {
+                        System.out.println(Messages.serverCommunicationError());
+                    }
+                }
+                else {
                     if (input.length > 1) {
                         try {
                             response = getResponseForRequest(input);

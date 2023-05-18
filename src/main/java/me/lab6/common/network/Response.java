@@ -1,4 +1,4 @@
-package me.lab6.common;
+package me.lab6.common.network;
 
 import java.io.Serializable;
 

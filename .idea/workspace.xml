@@ -4,38 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13cb3cb9-1653-4ee4-a419-cb2b52fe755a" name="Changes" comment="ServerMain &amp; ServerConsole">
+    <list default="true" id="13cb3cb9-1653-4ee4-a419-cb2b52fe755a" name="Changes" comment="Basically everything's done except for execute_script (fuck execute_script)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/exceptions/InvalidScriptException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/exceptions/ScriptRecursionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/utility/ScriptValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jar/client/lab6-FIN.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jar/client/lab6client-FIN.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jar/server/lab6-FIN.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jar/server/lab6server-FIN.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jar/client/lab6client-FIN.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jar/server/lab6server-FIN.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/io/Console.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/clientIO/EntityConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/io/EntityConstructor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/client/network/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/client/network/UDPClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/Encoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/ChunkOrganizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/ArgMustBeEmptyException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/ExitException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/InputEndException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/NoArgumentException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/NonExistentCommandException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/ScriptEndException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/WrongTypeException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/ChunkOrganizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/ChunkOrganizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/network/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/network/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/IncorrectWorkerFieldException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/exceptions/IncorrectWorkerFieldException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/exceptions/SameIDException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/exceptions/SameIDException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Limitations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Constraints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Messages.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/utility/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Coordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Organization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Organization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/common/workerRelated/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/ServerConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/ServerConsole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/ServerConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/io/ServerConsole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/ServerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/UDPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/UDPServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/UDPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/network/UDPServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Clear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/CountByPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/CountByPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/ExecuteScript.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Exit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/FilterGreaterThanOrganization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/FilterGreaterThanOrganization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/History.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Insert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/MinByStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/MinByStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveLowerKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/RemoveLowerKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/ReplaceIfLower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/ReplaceIfLower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Show.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/commands/Update.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/WorkerMapSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/WorkerMapSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/AddressDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/AddressDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/JsonValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/JsonValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/OrganizationDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/OrganizationDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/WorkerDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/json/WorkerDeserializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/lab6/server/managers/FileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +94,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -120,7 +133,7 @@
       <recent name="K:\Java\Yebisu\Labs\lab6p\src\main\java\me\lab6\server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientMain">
+  <component name="RunManager">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="me.lab6.client.ClientMain" />
       <module name="untitled.main" />
@@ -139,7 +152,7 @@
       <module name="untitled.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="me.lab6.server.*" />
+          <option name="PATTERN" value="me.lab6.server.network.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -221,6 +234,10 @@
       <workItem from="1684322650157" duration="90000" />
       <workItem from="1684322774318" duration="64000" />
       <workItem from="1684322856323" duration="8471000" />
+      <workItem from="1684331349601" duration="452000" />
+      <workItem from="1684343924163" duration="7564000" />
+      <workItem from="1684391717939" duration="14377000" />
+      <workItem from="1684417844971" duration="3155000" />
     </task>
     <task id="LOCAL-00001" summary="validation, build tasks and slight refactoring">
       <created>1684168249086</created>
@@ -257,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684325818298</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Basically everything's done except for execute_script (fuck execute_script)">
+      <created>1684331765029</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684331765029</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +294,7 @@
     <MESSAGE value="Client's request sending &amp; response receiving + printing response" />
     <MESSAGE value="Commands (except for execute_script)" />
     <MESSAGE value="ServerMain &amp; ServerConsole" />
-    <option name="LAST_COMMIT_MESSAGE" value="ServerMain &amp; ServerConsole" />
+    <MESSAGE value="Basically everything's done except for execute_script (fuck execute_script)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basically everything's done except for execute_script (fuck execute_script)" />
   </component>
 </project>

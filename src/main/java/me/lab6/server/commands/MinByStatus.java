@@ -1,7 +1,7 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.Response;
+import me.lab6.common.network.Response;
 import me.lab6.common.workerRelated.Status;
 import me.lab6.common.workerRelated.Worker;
 import me.lab6.server.managers.CollectionManager;
@@ -38,9 +38,7 @@ public class MinByStatus implements Command {
         if (filtered.size() == 0) {
             sb.append("The collection doesn't contain any elements with the minimal Status value.");
         } else {
-            for (Worker w : filtered) {
-                sb.append(w).append("\n");
-            }
+            filtered.forEach(w -> sb.append(w).append("\n"));
         }
         return new Response(sb.toString());
     }

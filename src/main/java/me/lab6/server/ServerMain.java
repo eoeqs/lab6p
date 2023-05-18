@@ -1,15 +1,20 @@
 package me.lab6.server;
 
 import com.google.gson.JsonParseException;
-import me.lab6.common.exceptions.*;
 import me.lab6.common.workerRelated.Worker;
+import me.lab6.server.exceptions.IncorrectWorkerFieldException;
+import me.lab6.server.exceptions.SameIDException;
+import me.lab6.server.io.ServerConsole;
 import me.lab6.server.managers.CollectionManager;
 import me.lab6.server.managers.CommandManager;
 import me.lab6.server.managers.FileManager;
+import me.lab6.server.network.UDPServer;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -49,11 +54,11 @@ public class ServerMain {
         try {
             Scanner scanner = new Scanner(System.in);
             ServerConsole serverConsole = new ServerConsole(scanner, commandManager);
+            Runtime.getRuntime().addShutdownHook(new Thread(serverConsole::exit));
             UDPServer server = new UDPServer(InetAddress.getLocalHost(), port, commandManager, serverConsole);
             server.run();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (UnknownHostException | SocketException e) {
+            System.out.println("Failed to launch the server using local host.");
         }
     }
 }

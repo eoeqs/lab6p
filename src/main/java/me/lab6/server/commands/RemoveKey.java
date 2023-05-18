@@ -1,8 +1,7 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.Response;
-import me.lab6.common.workerRelated.Worker;
+import me.lab6.common.network.Response;
 import me.lab6.server.managers.CollectionManager;
 
 /**
@@ -29,13 +28,12 @@ public class RemoveKey implements Command {
     @Override
     public Response execute(Object arg) {
         long key = Long.parseLong((String) arg);
-        for (Worker worker : collectionManager.workerMap().values()) {
-            if (worker.getId() == key) {
-                collectionManager.workerMap().values().remove(worker);
-                return new Response("Collection element with key " + key + " has been successfully deleted.\n");
-            }
+        if (collectionManager.workerMap().containsKey(key)) {
+            collectionManager.workerMap().entrySet().removeIf(w -> w.getKey() == key);
+            return new Response("Collection element with key " + key + " has been successfully deleted.\n");
+        } else {
+            return new Response("The collection doesn't contain an element with key = " + key + ".\n");
         }
-        return new Response("The collection doesn't contain an element with key = " + key + ".\n");
     }
 
     /**

@@ -1,4 +1,4 @@
-package me.lab6.common.exceptions;
+package me.lab6.server.exceptions;
 
 public class SameIDException extends Exception {
 }

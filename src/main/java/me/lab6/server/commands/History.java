@@ -1,7 +1,7 @@
 package me.lab6.server.commands;
 
 
-import me.lab6.common.Response;
+import me.lab6.common.network.Response;
 
 import java.util.ArrayList;
 
@@ -32,9 +32,7 @@ public class History implements Command {
             return new Response("History is yet empty.\n");
         }
         StringBuilder sb = new StringBuilder();
-        for (String i : history) {
-            sb.append(i).append("\n");
-        }
+        history.forEach(s -> sb.append(s).append("\n"));
         return new Response(sb.toString());
     }
 

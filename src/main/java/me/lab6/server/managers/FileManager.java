@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import me.lab6.common.exceptions.SameIDException;
+import me.lab6.server.exceptions.SameIDException;
 import me.lab6.server.json.*;
 import me.lab6.common.workerRelated.*;
 

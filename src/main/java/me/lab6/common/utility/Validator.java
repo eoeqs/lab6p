@@ -11,60 +11,60 @@ import java.util.Scanner;
 
 public class Validator {
 
-    private static final Map<String, Limitations> commandsWithoutArg = new HashMap<>();
-    private static final Map<String, Limitations> commandsWithArg = new HashMap<>();
+    private static final Map<String, Constraints> commandsWithoutArg = new HashMap<>();
+    private static final Map<String, Constraints> commandsWithArg = new HashMap<>();
 
     static {
-        commandsWithoutArg.put("exit", new Limitations());
-        commandsWithoutArg.put("help", new Limitations());
-        commandsWithoutArg.put("info", new Limitations());
-        commandsWithoutArg.put("show", new Limitations());
-        commandsWithoutArg.put("history", new Limitations());
-        commandsWithoutArg.put("clear", new Limitations());
-        commandsWithoutArg.put("min_by_status", new Limitations());
-        commandsWithoutArg.put("filter_greater_than_organization", new Limitations());
-        commandsWithArg.put("insert", new Limitations(
+        commandsWithoutArg.put("exit", new Constraints());
+        commandsWithoutArg.put("help", new Constraints());
+        commandsWithoutArg.put("info", new Constraints());
+        commandsWithoutArg.put("show", new Constraints());
+        commandsWithoutArg.put("history", new Constraints());
+        commandsWithoutArg.put("clear", new Constraints());
+        commandsWithoutArg.put("min_by_status", new Constraints());
+        commandsWithoutArg.put("filter_greater_than_organization", new Constraints());
+        commandsWithArg.put("insert", new Constraints(
                 DataType.LONG, Messages.wrongType("insert", "A proper long value"),
                 Messages.noInput("insert", "a long value")));
-        commandsWithArg.put("remove_key", new Limitations(
+        commandsWithArg.put("remove_key", new Constraints(
                 DataType.LONG, Messages.wrongType("remove_key", "A proper long value"),
                 Messages.noInput("remove_key", "a long value")));
-        commandsWithArg.put("update", new Limitations(
+        commandsWithArg.put("update", new Constraints(
                 DataType.LONG, Messages.wrongType("update", "A proper long value"),
                 Messages.noInput("update", "a long value")));
-        commandsWithArg.put("remove_lower_key", new Limitations(
+        commandsWithArg.put("remove_lower_key", new Constraints(
                 DataType.LONG, Messages.wrongType("remove_lower_key",
                 "A proper long value"),
                 Messages.noInput("remove_lower_key", "a long value")));
-        commandsWithArg.put("count_by_position", new Limitations(
+        commandsWithArg.put("count_by_position", new Constraints(
                 DataType.POSITION, Messages.wrongType("count_by_position",
                 "A proper Position value (" + Position.allPositions() + ")"),
                 Messages.noInput("count_by_position", Position.allPositions())));
-        commandsWithArg.put("replace_if_lower", new Limitations(
+        commandsWithArg.put("replace_if_lower", new Constraints(
                 DataType.LONG, Messages.wrongType("replace_if_lower", "A proper long value"),
                 Messages.noInput("replace_if_lower", "a long value")));
-        commandsWithArg.put("execute_script", new Limitations(DataType.FILEPATH,
+        commandsWithArg.put("execute_script", new Constraints(DataType.FILEPATH,
                 Messages.wrongType("execute_script", "A path to an existing file"),
                 Messages.noInput("execute_script", "a file path")));
     }
 
     public static String validateCommandAndArg(String[] input) {
-        String commandStr = input[0];
+        String commandStr = input[0].toLowerCase();
         int existence = validateCommand(commandStr);
         if (existence == 0) {
             return "Non-existent command. Please, use 'help' to see information about available commands.";
         }
         if (existence > 0) {
-            Limitations limitations = commandsWithArg.get(commandStr);
+            Constraints constraints = commandsWithArg.get(commandStr);
             if (input.length == 1) {
-                return limitations.getNoInputMessage();
+                return constraints.getNoInputMessage();
             }
-            switch (validateData(input[1], limitations)) {
+            switch (validateData(input[1], constraints)) {
                 case 5 -> {
-                    return limitations.getNoInputMessage();
+                    return constraints.getNoInputMessage();
                 }
                 case 10 -> {
-                    return limitations.getWrongTypeMessage();
+                    return constraints.getWrongTypeMessage();
                 }
             }
         }
@@ -81,18 +81,21 @@ public class Validator {
         return 0;
     }
 
-    public static int validateData(String str, Limitations limitations) {
-        if (!nullCheck(str, limitations)) {
+    public static int validateData(String str, Constraints constraints) {
+        if (nullCheck(str, constraints)) {
+            if (!constraints.isNullable()) {
+                if (!typeCheck(str, constraints) || !positiveCheck(str, constraints)) {
+                    return 10;
+                }
+            }
+            return 0;
+        } else {
             return 5;
         }
-        if (!typeCheck(str, limitations) || !positiveCheck(str, limitations)) {
-            return 10;
-        }
-        return 0;
     }
 
-    private static boolean typeCheck(String data, Limitations limitations) {
-        switch (limitations.getDataType()) {
+    private static boolean typeCheck(String data, Constraints constraints) {
+        switch (constraints.getDataType()) {
             case LONG -> {
                 return checkLong(data);
             }
@@ -123,20 +126,20 @@ public class Validator {
         }
     }
 
-    private static boolean positiveCheck(String number, Limitations limitations) {
-        boolean positive = limitations.isPositive();
+    private static boolean positiveCheck(String number, Constraints constraints) {
+        boolean positive = constraints.isPositive();
         if (!positive) {
             return true;
         }
         return Double.compare(Double.parseDouble(number), 0) > 0;
     }
 
-    private static boolean nullCheck(String data, Limitations limitations) {
-        if (limitations.getDataType() == null) {
+    private static boolean nullCheck(String data, Constraints constraints) {
+        if (constraints.getDataType() == null) {
             return true;
         }
         if (data == null || data.isBlank()) {
-            return limitations.isNullable();
+            return constraints.isNullable();
         }
         return true;
     }

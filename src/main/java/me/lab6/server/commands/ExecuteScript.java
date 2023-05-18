@@ -1,130 +1,91 @@
-//package me.lab6.server.commands;
-//
-//
-//
-//import me.lab6.common.exceptions.ExitException;
-//import me.lab6.common.exceptions.InputEndException;
-//import me.lab6.common.exceptions.ScriptEndException;
-//import me.lab6.common.utility.DataLimitations;
-//import me.lab6.common.utility.DataType;
-//import me.lab6.server.managers.CollectionManager;
-//import me.lab6.server.managers.CommandManager;
-//import me.lab6.server.managers.FileManager;
-//import me.lab6.server.managers.UserInteractionManager;
-//
-//import java.io.File;
-//import java.io.FileNotFoundException;
-//import java.util.ArrayDeque;
-//import java.util.Deque;
-//import java.util.Scanner;
-//
-///**
-// * Executes commands in the given script.
-// */
-//public class ExecuteScript extends AbstractCommand {
-//
-//    private final FileManager fileManager;
-//    private final CollectionManager collectionManager;
-//    private static final Deque<File> scriptDeque = new ArrayDeque<>();
-//    private static final Deque<Scanner> scannerDeque = new ArrayDeque<>();
-//
-//    /**
-//     * Constructs an ExecuteScript object with the specified column manager and file manager.
-//     *
-//     * @param collectionManager   collection manager to use for executing the script
-//     * @param fileManager file manager to use for accessing the script file
-//     */
-//    public ExecuteScript(CollectionManager collectionManager, FileManager fileManager) {
-//        this.fileManager = fileManager;
-//        this.collectionManager = collectionManager;
-//    }
-//
-//    /**
-//     * Executes the command with the specified file path argument.
-//     * If the specified file has already been executed, interrupts the execution to avoid infinite recursion.
-//     * Otherwise, executes the script by setting the input source to the script file and creating a new UIMan object.
-//     *
-//     * @param arg the file path of the script to execute
-//     * @throws ExitException if the user chooses to exit the program
-//     */
-//    @Override
-//    public void execute(String arg) throws ExitException {
-//        File script = new File(arg).getAbsoluteFile();
-//        if (scriptDeque.contains(script)) {
-//            scriptDeque.clear();
-//            scannerDeque.clear();
-//            UserInteractionManager.setSource(new Scanner(System.in), true);
-//            System.out.println("Recursion detected during the script execution. Script execution interrupted.\n");
-//        } else {
-//            try {
-//                Scanner scanner = new Scanner(script);
-//                scriptDeque.addLast(script);
-//                scannerDeque.addLast(scanner);
-//                UserInteractionManager.setSource(scanner, false);
-//                CollectionManager collectionManager1 = collectionManager;
-//                CommandManager commandManager = new CommandManager(collectionManager1, fileManager, false);
-//                UserInteractionManager userInteractionManager = new UserInteractionManager(commandManager);
-//                System.out.println("Executing " + script.getPath() + "...\n");
-//                try {
-//                    userInteractionManager.interact();
-//                } catch (ScriptEndException e) {
-//                    collectionManager.setWorkerMap(collectionManager1.getWorkerMap());
-//                    scriptDeque.removeLast();
-//                    scannerDeque.removeLast();
-//                    System.out.println("Script " + script.getPath() + " finished execution.\n");
-//                    if (!scriptDeque.isEmpty()) {
-//                        UserInteractionManager.setSource(scannerDeque.getLast(), false);
-//                    } else {
-//                        UserInteractionManager.setSource(new Scanner(System.in), true);
-//                    }
-//                } catch (InputEndException | ExitException e) {
-//                    throw new ExitException();
-//                }
-//            } catch (FileNotFoundException e) {
-//                System.out.println("File " + arg + " not found.\n");
-//            }
-//        }
-//    }
-//
-//    /**
-//     * Returns the name of the command.
-//     *
-//     * @return the name of the command ("execute_script")
-//     */
-//    @Override
-//    public String name() {
-//        return "execute_script";
-//    }
-//
-//    /**
-//     * Returns the expected argument format for the command.
-//     *
-//     * @return the expected argument format for the command ("{file_path}")
-//     */
-//    @Override
-//    public String argDesc() {
-//        return "{file_path}";
-//    }
-//
-//    /**
-//     * Returns the description of the command for the help command.
-//     *
-//     * @return the description of the command ("execute the sequence of commands from a file")
-//     */
-//    @Override
-//    public String desc() {
-//        return "execute the sequence of commands from a file";
-//    }
-//
-//    /**
-//     * Returns the data limitations for the command argument.
-//     *
-//     * @return the data limitations for the command argument
-//     */
-//    @Override
-//    public Object[] argLimitations() {
-//        return new DataLimitations(DataType.FILEPATH,
-//                UserInteractionManager.wrongArgMessage(this) + "Please, use a proper file path.",
-//                UserInteractionManager.noArgMessage(this)).limitations();
-//    }
-//}
+package me.lab6.server.commands;
+
+
+import me.lab6.common.network.Response;
+import me.lab6.common.workerRelated.*;
+import me.lab6.server.managers.CommandManager;
+
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Iterator;
+
+/**
+ * Executes commands in the given script.
+ */
+public class ExecuteScript implements Command {
+
+    private final CommandManager commandManager;
+
+    public ExecuteScript(CommandManager commandManager) {
+        this.commandManager = commandManager;
+    }
+
+    @Override
+    public Response execute(Object arg) {
+        String script = (String) arg;
+        Iterator<String> iter = Arrays.asList(script.split("\n")).iterator();
+        StringBuilder sb = new StringBuilder();
+        while (iter.hasNext()) {
+            Response response;
+            String currentString = iter.next();
+            if (currentString.isBlank()) {
+                continue;
+            }
+            String[] words = iter.next().split("\\s+", 2);
+            if (words[0].equalsIgnoreCase("insert") || words[0].equalsIgnoreCase("update")
+                    || words[0].equalsIgnoreCase("replace_if_lower")) {
+                response = commandManager.executeCommand(words[0], buildWorker(iter, Long.parseLong(words[1])));
+            } else if (words[0].equalsIgnoreCase("filter_greater_than_organization")) {
+                response = commandManager.executeCommand(words[0], buildOrganization(iter));
+            } else {
+                response = commandManager.executeCommand(words[0], words[1]);
+            }
+            sb.append(response.toString()).append("\n");
+        }
+        return new Response(sb.toString());
+    }
+
+    private Worker buildWorker(Iterator<String> iter, long key) {
+        String name = iter.next();
+        String xStr = iter.next();
+        double x = xStr.isBlank() ? 0 : Double.parseDouble(xStr);
+        String yStr = iter.next();
+        Double y = yStr.isBlank() ? 0D : Double.parseDouble(yStr);
+        int salary = Integer.parseInt(iter.next());
+        LocalDate startDate = LocalDate.parse(iter.next());
+        String posStr = iter.next();
+        Position pos = posStr.isBlank() ? null : Position.valueOf(posStr.toUpperCase());
+        String statusStr = iter.next();
+        Status status = statusStr.isBlank() ? null : Status.valueOf(statusStr.toUpperCase());
+        Organization org = null;
+        if (!iter.next().isBlank()) {
+            org = buildOrganization(iter);
+        }
+        return new Worker(key, name, new Coordinates(x, y), LocalDate.now(), salary, startDate, pos, status, org);
+    }
+
+    private Organization buildOrganization(Iterator<String> iter) {
+        String name = iter.next();
+        int turnover = Integer.parseInt(iter.next());
+        long empCount = Integer.parseInt(iter.next());
+        String street = iter.next();
+        street = street.isBlank() ? null : street;
+        String zipCode = iter.next();
+        return new Organization(name, turnover, empCount, new Address(street, zipCode));
+    }
+
+    @Override
+    public String name() {
+        return "execute_script";
+    }
+
+    @Override
+    public String argDesc() {
+        return "{file_path}";
+    }
+
+    @Override
+    public String desc() {
+        return "execute the sequence of commands from a file";
+    }
+}

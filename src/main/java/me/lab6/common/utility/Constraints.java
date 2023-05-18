@@ -1,6 +1,6 @@
 package me.lab6.common.utility;
 
-public class Limitations {
+public class Constraints {
 
     private final DataType dataType;
     private final boolean nullable;
@@ -10,7 +10,7 @@ public class Limitations {
     private final String noInputMessage;
 
     //no arg
-    public Limitations() {
+    public Constraints() {
         dataType = null;
         nullable = true;
         positive = false;
@@ -20,7 +20,7 @@ public class Limitations {
     }
 
     //arg
-    public Limitations(DataType dataType, String wrongTypeMessage, String noInputMessage) {
+    public Constraints(DataType dataType, String wrongTypeMessage, String noInputMessage) {
         this.dataType = dataType;
         nullable = false;
         positive = false;
@@ -29,8 +29,8 @@ public class Limitations {
         this.noInputMessage = noInputMessage;
     }
 
-    //json field
-    public Limitations(DataType dataType, boolean nullable, boolean positive) {
+    //field no messages
+    public Constraints(DataType dataType, boolean nullable, boolean positive) {
         this.dataType = dataType;
         this.nullable = nullable;
         this.positive = positive;
@@ -40,7 +40,7 @@ public class Limitations {
     }
 
     //field
-    public Limitations(DataType dataType, boolean nullable, boolean positive,
+    public Constraints(DataType dataType, boolean nullable, boolean positive,
                        String inviteMessage, String wrongTypeMessage, String noInputMessage) {
         this.dataType = dataType;
         this.nullable = nullable;

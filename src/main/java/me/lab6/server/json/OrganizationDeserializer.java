@@ -1,7 +1,7 @@
 package me.lab6.server.json;
 
 import com.google.gson.*;
-import me.lab6.common.exceptions.IncorrectWorkerFieldException;
+import me.lab6.server.exceptions.IncorrectWorkerFieldException;
 import me.lab6.common.utility.DataType;
 import me.lab6.common.workerRelated.Address;
 import me.lab6.common.workerRelated.Organization;

@@ -1,9 +1,9 @@
 package me.lab6.client.network;
 
 import com.google.common.primitives.Bytes;
-import me.lab6.common.ChunkOrganizer;
-import me.lab6.common.Request;
-import me.lab6.common.Response;
+import me.lab6.common.utility.ChunkOrganizer;
+import me.lab6.common.network.Request;
+import me.lab6.common.network.Response;
 import org.apache.commons.lang3.SerializationUtils;
 
 import java.io.IOException;

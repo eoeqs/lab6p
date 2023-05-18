@@ -2,8 +2,8 @@ package me.lab6.server.managers;
 
 
 
-import me.lab6.common.Request;
-import me.lab6.common.Response;
+import me.lab6.common.network.Request;
+import me.lab6.common.network.Response;
 import me.lab6.server.commands.*;
 
 import java.io.IOException;
@@ -41,7 +41,7 @@ public class CommandManager {
         commandMap.put("update", new Update(collectionManager));
         commandMap.put("remove_key", new RemoveKey(collectionManager));
         commandMap.put("clear", new Clear(collectionManager));
-//        commandMap.put("execute_script", new ExecuteScript(collectionManager, fileManager));
+        commandMap.put("execute_script", new ExecuteScript(new CommandManager(collectionManager, fileManager)));
         commandMap.put("exit", new Exit());
         commandMap.put("history", new History(history));
         commandMap.put("replace_if_lower", new ReplaceIfLower(collectionManager));
@@ -66,8 +66,13 @@ public class CommandManager {
         return response;
     }
 
-    public void save() throws IOException {
-        fileManager.writeWorkersToFile(collectionManager);
+    public boolean save() {
+        try {
+            fileManager.writeWorkersToFile(collectionManager);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
     }
 
 }
