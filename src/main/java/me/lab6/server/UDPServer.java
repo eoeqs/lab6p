@@ -14,10 +14,12 @@ import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.*;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
+import java.util.logging.FileHandler;
 
 public class UDPServer {
 
@@ -27,17 +29,19 @@ public class UDPServer {
     private final InetSocketAddress address;
     private final CommandManager commandManager;
     private final ServerConsole console;
-    private static final Logger logger = (Logger) LoggerFactory.getLogger("server.network");
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(UDPServer.class);
+
 
 
     public UDPServer(InetAddress address, int port, CommandManager commandManager, ServerConsole console) throws SocketException {
+
         logger.setLevel(Level.INFO);
         this.address = new InetSocketAddress(address, port);
         this.commandManager = commandManager;
         this.console = console;
         socket = new DatagramSocket(getAddress());
         socket.setReuseAddress(true);
-        logger.info("Server has just started. Address: {}, port: {}", address.getHostName(), port);
+        socket.setSoTimeout(4000);
     }
 
     public InetSocketAddress getAddress() {
