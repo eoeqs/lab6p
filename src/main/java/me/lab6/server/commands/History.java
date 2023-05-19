@@ -4,20 +4,21 @@ package me.lab6.server.commands;
 import me.lab6.common.network.Response;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The {@code History} class implements the {@code Command} interface
  * and represents the command for printing out the 6 last executed commands.
  */
 public class History implements Command {
-    ArrayList<String> history;
+    List<String> history;
 
     /**
      * Constructs a new {@code History} object with the specified history of commands.
      *
      * @param history the history of commands to be used
      */
-    public History(ArrayList<String> history) {
+    public History(List<String> history) {
         this.history = history;
     }
 

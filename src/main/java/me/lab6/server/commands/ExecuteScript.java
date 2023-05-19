@@ -3,46 +3,52 @@ package me.lab6.server.commands;
 
 import me.lab6.common.network.Response;
 import me.lab6.common.workerRelated.*;
-import me.lab6.server.managers.CommandManager;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * Executes commands in the given script.
  */
 public class ExecuteScript implements Command {
 
-    private final CommandManager commandManager;
+    private final Map<String, Command> commands;
 
-    public ExecuteScript(CommandManager commandManager) {
-        this.commandManager = commandManager;
+    public ExecuteScript(Map<String, Command> commands) {
+        this.commands = commands;
+        this.commands.put("execute_script", this);
     }
 
     @Override
     public Response execute(Object arg) {
         String script = (String) arg;
         Iterator<String> iter = Arrays.asList(script.split("\n")).iterator();
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder("Executing script.\n");
         while (iter.hasNext()) {
-            Response response;
-            String currentString = iter.next();
-            if (currentString.isBlank()) {
-                continue;
+            Response response = emulateExecution(iter);
+            if (response.message() != null) {
+                sb.append(response).append("\n");
             }
-            String[] words = iter.next().split("\\s+", 2);
-            if (words[0].equalsIgnoreCase("insert") || words[0].equalsIgnoreCase("update")
-                    || words[0].equalsIgnoreCase("replace_if_lower")) {
-                response = commandManager.executeCommand(words[0], buildWorker(iter, Long.parseLong(words[1])));
-            } else if (words[0].equalsIgnoreCase("filter_greater_than_organization")) {
-                response = commandManager.executeCommand(words[0], buildOrganization(iter));
-            } else {
-                response = commandManager.executeCommand(words[0], words[1]);
-            }
-            sb.append(response.toString()).append("\n");
         }
-        return new Response(sb.toString());
+        return new Response(sb.append("Script finished execution.\n").toString());
+    }
+
+    private Response emulateExecution(Iterator<String> iter) {
+        String currentString = iter.next();
+        if (currentString.isBlank()) {
+            return new Response(null);
+        }
+        String[] words = currentString.split("\\s+", 2);
+        if (words[0].equalsIgnoreCase("insert") || words[0].equalsIgnoreCase("update")
+                || words[0].equalsIgnoreCase("replace_if_lower")) {
+            Worker worker = buildWorker(iter, Long.parseLong(words[1]));
+            return commands.get(words[0]).execute(worker);
+        } else if (words[0].equalsIgnoreCase("filter_greater_than_organization")) {
+            Organization organization = buildOrganization(iter);
+            return commands.get(words[0]).execute(organization);
+        } else {
+            return commands.get(words[0]).execute(words[1]);
+        }
     }
 
     private Worker buildWorker(Iterator<String> iter, long key) {

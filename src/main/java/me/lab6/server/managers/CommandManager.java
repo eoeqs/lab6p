@@ -9,6 +9,7 @@ import me.lab6.server.commands.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,7 +18,7 @@ import java.util.Map;
  */
 public class CommandManager {
     private final Map<String, Command> commandMap;
-    private final ArrayList<String> history;
+    private final List<String> history;
     private final FileManager fileManager;
     private final CollectionManager collectionManager;
 
@@ -41,7 +42,6 @@ public class CommandManager {
         commandMap.put("update", new Update(collectionManager));
         commandMap.put("remove_key", new RemoveKey(collectionManager));
         commandMap.put("clear", new Clear(collectionManager));
-        commandMap.put("execute_script", new ExecuteScript(new CommandManager(collectionManager, fileManager)));
         commandMap.put("exit", new Exit());
         commandMap.put("history", new History(history));
         commandMap.put("replace_if_lower", new ReplaceIfLower(collectionManager));
@@ -50,6 +50,7 @@ public class CommandManager {
         commandMap.put("count_by_position", new CountByPosition(collectionManager));
         commandMap.put("filter_greater_than_organization", new FilterGreaterThanOrganization(collectionManager));
         commandMap.put("help", new Help(new ArrayList<>(commandMap.values())));
+        commandMap.put("execute_script", new ExecuteScript(commandMap));
         this.commandMap = commandMap;
     }
 

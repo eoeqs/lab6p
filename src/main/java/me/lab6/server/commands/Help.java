@@ -38,6 +38,7 @@ public class Help implements Command {
             }
             sb.append(" - ").append(c.desc()).append("\n");
         });
+        sb.append("execute_script {filepath} - execute the sequence of commands from a file\n");
         return new Response(sb.toString());
     }
 
