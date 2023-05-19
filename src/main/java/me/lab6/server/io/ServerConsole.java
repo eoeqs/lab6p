@@ -17,6 +17,7 @@ public class ServerConsole {
     }
 
     public boolean handleServerInput() {
+
         try {
             if (System.in.available() > 0) {
                 String input = scanner.nextLine().trim();
@@ -32,7 +33,10 @@ public class ServerConsole {
                         }
                     }
                     case "exit" -> {
-                        return confirmExit();
+                        if (confirmExit()) {
+
+                            System.exit(0);
+                        }
                     }
                     default -> {
                         System.out.println("You can only use 'save' and 'exit' in the Server console.");

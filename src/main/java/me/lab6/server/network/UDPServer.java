@@ -40,7 +40,7 @@ public class UDPServer {
         this.console = console;
         socket = new DatagramSocket(getAddress());
         socket.setReuseAddress(true);
-        socket.setSoTimeout(4000);
+
     }
 
     public InetSocketAddress getAddress() {
@@ -48,12 +48,19 @@ public class UDPServer {
     }
 
     public Pair<Byte[], SocketAddress> receiveData() throws IOException {
+
+
         boolean received = false;
         byte[] result = new byte[0];
         SocketAddress address = null;
+
         while (!received) {
+            socket.setSoTimeout(300);
+            console.handleServerInput();
             byte[] data = new byte[packageSize];
+
             DatagramPacket packet = new DatagramPacket(data, packageSize);
+
             socket.receive(packet);
             address = packet.getSocketAddress();
             logger.info("Received \"" + new String(data) + "\" from " + packet.getAddress());
