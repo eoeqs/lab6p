@@ -22,10 +22,10 @@ public class ExecuteScript implements Command {
     @Override
     public Response execute(Object arg) {
         String script = (String) arg;
-        Iterator<String> iter = Arrays.asList(script.split("\n")).iterator();
+        Scanner scanner = new Scanner(script);
         StringBuilder sb = new StringBuilder("Executing script.\n");
-        while (iter.hasNext()) {
-            Response response = emulateExecution(iter);
+        while (scanner.hasNextLine()) {
+            Response response = emulateExecution(scanner);
             if (response.message() != null) {
                 sb.append(response).append("\n");
             }
@@ -33,50 +33,54 @@ public class ExecuteScript implements Command {
         return new Response(sb.append("Script finished execution.\n").toString());
     }
 
-    private Response emulateExecution(Iterator<String> iter) {
-        String currentString = iter.next();
-        if (currentString.isBlank()) {
+    private Response emulateExecution(Scanner scanner) {
+        String currentString = scanner.nextLine();
+        String[] words = currentString.split("\\s+", 2);
+        if (words[0].isBlank()) {
             return new Response(null);
         }
-        String[] words = currentString.split("\\s+", 2);
         if (words[0].equalsIgnoreCase("insert") || words[0].equalsIgnoreCase("update")
                 || words[0].equalsIgnoreCase("replace_if_lower")) {
-            Worker worker = buildWorker(iter, Long.parseLong(words[1]));
+            Worker worker = buildWorker(scanner, Long.parseLong(words[1]));
             return commands.get(words[0]).execute(worker);
         } else if (words[0].equalsIgnoreCase("filter_greater_than_organization")) {
-            Organization organization = buildOrganization(iter);
+            Organization organization = buildOrganization(scanner);
             return commands.get(words[0]).execute(organization);
         } else {
-            return commands.get(words[0]).execute(words[1]);
+            if (words.length > 1) {
+                return commands.get(words[0]).execute(words[1]);
+            } else {
+                return commands.get(words[0]).execute(null);
+            }
         }
     }
 
-    private Worker buildWorker(Iterator<String> iter, long key) {
-        String name = iter.next();
-        String xStr = iter.next();
+    private Worker buildWorker(Scanner scanner, long key) {
+        String name = scanner.nextLine();
+        String xStr = scanner.nextLine();
         double x = xStr.isBlank() ? 0 : Double.parseDouble(xStr);
-        String yStr = iter.next();
+        String yStr = scanner.nextLine();
         Double y = yStr.isBlank() ? 0D : Double.parseDouble(yStr);
-        int salary = Integer.parseInt(iter.next());
-        LocalDate startDate = LocalDate.parse(iter.next());
-        String posStr = iter.next();
+        int salary = Integer.parseInt(scanner.nextLine());
+        LocalDate startDate = LocalDate.parse(scanner.nextLine());
+        String posStr = scanner.nextLine();
         Position pos = posStr.isBlank() ? null : Position.valueOf(posStr.toUpperCase());
-        String statusStr = iter.next();
+        String statusStr = scanner.nextLine();
         Status status = statusStr.isBlank() ? null : Status.valueOf(statusStr.toUpperCase());
         Organization org = null;
-        if (!iter.next().isBlank()) {
-            org = buildOrganization(iter);
+        if (!scanner.nextLine().isBlank()) {
+            org = buildOrganization(scanner);
         }
         return new Worker(key, name, new Coordinates(x, y), LocalDate.now(), salary, startDate, pos, status, org);
     }
 
-    private Organization buildOrganization(Iterator<String> iter) {
-        String name = iter.next();
-        int turnover = Integer.parseInt(iter.next());
-        long empCount = Integer.parseInt(iter.next());
-        String street = iter.next();
+    private Organization buildOrganization(Scanner scanner) {
+        String name = scanner.nextLine();
+        int turnover = Integer.parseInt(scanner.nextLine());
+        long empCount = Integer.parseInt(scanner.nextLine());
+        String street = scanner.nextLine();
         street = street.isBlank() ? null : street;
-        String zipCode = iter.next();
+        String zipCode = scanner.nextLine();
         return new Organization(name, turnover, empCount, new Address(street, zipCode));
     }
 

@@ -15,17 +15,15 @@ import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.*;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
-import java.util.logging.FileHandler;
 
 public class UDPServer {
 
-    private final static int packageSize = 1024;
-    private final static int dataSize = 1023;
+    private final static int packageSize = 8192;
+    private final static int dataSize = 8191;
     private final DatagramSocket socket;
     private final InetSocketAddress address;
     private final CommandManager commandManager;
@@ -107,6 +105,7 @@ public class UDPServer {
     }
 
     public void run() {
+        System.out.println("Server started.");
         logger.info("Server started at " + address);
         while (true) {
             Pair<Byte[], SocketAddress> pair;
@@ -131,7 +130,16 @@ public class UDPServer {
                 logger.info("Processing " + request + " from " + address);
             } catch (SerializationException e) {
                 logger.error("Failed to deserialize received data.");
+                Response response = new Response("The sent request was too big for the server to process. Please, try again.");
+                byte[] data = SerializationUtils.serialize(response);
+                try {
+                    sendData(data, address);
+                    logger.info("Response has been sent to client " + address);
+                } catch (Exception t) {
+                    logger.error("Failed to send response due to an IO error.");
+                }
                 disconnect();
+                logger.info("Disconnecting from client " + address);
                 continue;
             }
             Response response = null;

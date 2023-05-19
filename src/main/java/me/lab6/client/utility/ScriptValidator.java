@@ -34,9 +34,8 @@ public class ScriptValidator {
         try {
             if (validateScript()) {
                 StringBuilder sb = new StringBuilder();
-                for (String s : allScriptsContent) {
-                    sb.append(s).append("\n");
-                }
+                allScriptsContent.forEach(s -> sb.append(s).append("\n"));
+                allScriptsContent.clear();
                 return sb.toString();
             } else {
                 allScriptsContent.clear();
@@ -62,12 +61,18 @@ public class ScriptValidator {
             }
             if (currentWords[0].equalsIgnoreCase("insert") || currentWords[0].equalsIgnoreCase("update")
                     || currentWords[0].equalsIgnoreCase("replace_if_lower")) {
+                allScriptsContent.add(currentString);
                 if (!validateWorkerFields()) {
                     return false;
+                } else {
+                    continue;
                 }
             } else if (currentWords[0].equalsIgnoreCase("filter_greater_than_organization")) {
+                allScriptsContent.add(currentString);
                 if (!validateOrganizationFields()) {
                     return false;
+                } else {
+                    continue;
                 }
             } else if (currentWords[0].equalsIgnoreCase("execute_script")) {
                 if (!validateNestedScript(currentWords[1])) {
@@ -130,7 +135,9 @@ public class ScriptValidator {
             } else {
                 allScriptsContent.add(currentString);
             }
-            if (next().isBlank()) {
+            currentString = next();
+            allScriptsContent.add(currentString);
+            if (currentString.isBlank()) {
                 return true;
             } else {
                 return validateOrganizationFields();

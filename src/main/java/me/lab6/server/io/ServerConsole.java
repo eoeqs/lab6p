@@ -18,9 +18,6 @@ public class ServerConsole {
 
     public boolean handleServerInput() {
         try {
-            if (System.in.available() < 0) {
-                Thread.sleep(5000);
-            }
             if (System.in.available() > 0) {
                 String input = scanner.nextLine().trim();
                 switch (input) {
@@ -47,7 +44,6 @@ public class ServerConsole {
             return false;
         } catch (NoSuchElementException e) {
             return true;
-        } catch (InterruptedException ignored) {
         }
         return false;
     }
