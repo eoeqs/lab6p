@@ -55,51 +55,33 @@ public class Console {
                         || input[0].equalsIgnoreCase("update")) {
                     try {
                         Worker worker = constructor.constructWorker(Long.parseLong(input[1]));
-                        try {
-                            response = getResponseForRequest(input[0], worker);
-                        } catch (IOException e) {
-                            System.out.println(Messages.serverCommunicationError());
-                        }
+                        response = tryToProcess(input[0], worker);
                     } catch (NoSuchElementException e) {
                         System.out.println("Worker description process was canceled.");
                     }
                 } else if (input[0].equalsIgnoreCase("filter_greater_than_organization")) {
                     try {
                         Organization organization = constructor.constructOrganization();
-                        try {
-                            response = getResponseForRequest(input[0], organization);
-                        } catch (IOException e) {
-                            System.out.println(Messages.serverCommunicationError());
-                        }
+                        response = tryToProcess(input[0], organization);
                     } catch (NoSuchElementException e) {
                         System.out.println("Organization description process was canceled.");
                     }
                 } else if (input[0].equalsIgnoreCase("execute_script")) {
                     try {
-                        response = getResponseForRequest(input[0], new ScriptValidator(input[1]).getFinalScript());
+                        String scriptContent = new ScriptValidator(input[1]).getFinalScript();
+                        response = tryToProcess(input[0], scriptContent);
                     } catch (InvalidScriptException e) {
                         System.out.println(Messages.invalidScript());
                     } catch (FileNotFoundException e) {
                         System.out.println(Messages.fileNotFound());
                     } catch (ScriptRecursionException e) {
                         System.out.println(Messages.scriptRecursion());
-                    } catch (IOException e) {
-                        System.out.println(Messages.serverCommunicationError());
                     }
-                }
-                else {
+                } else {
                     if (input.length > 1) {
-                        try {
-                            response = getResponseForRequest(input);
-                        } catch (IOException e) {
-                            System.out.println(Messages.serverCommunicationError());
-                        }
+                        response = tryToProcess(input[0], input[1]);
                     } else {
-                        try {
-                            response = getResponseForRequest(input[0]);
-                        } catch (IOException e) {
-                            System.out.println(Messages.serverCommunicationError());
-                        }
+                        response = tryToProcess(input[0], null);
                     }
                 }
                 if (response != null) {
@@ -114,16 +96,24 @@ public class Console {
         }
     }
 
-    private Response getResponseForRequest(String command) throws IOException {
-        return client.communicateWithServer(new Request(command, null));
+    private Response tryToProcess(String input, Object arg) {
+        try {
+            return getResponseForRequest(input, arg);
+        } catch (IOException e) {
+            System.out.println(Messages.tryingAgain());
+            try {
+                Thread.sleep(1500);
+                return getResponseForRequest(input, arg);
+            } catch (IOException ex) {
+                System.out.println(Messages.serverCommunicationError());
+            } catch (InterruptedException ignored) {
+            }
+        }
+        return null;
     }
 
     private Response getResponseForRequest(String command, Object argument) throws IOException {
         return client.communicateWithServer(new Request(command, argument));
-    }
-
-    private Response getResponseForRequest(String[] input) throws IOException {
-        return client.communicateWithServer(new Request(input[0], input[1]));
     }
 
 }

@@ -24,7 +24,7 @@ public class Messages {
     }
 
     public static String serverCommunicationError() {
-        return "There was an error during the communication with server. Please, try again.";
+        return "Server did not respond. Command wasn't executed.\n";
     }
 
     public static String saved() {
@@ -49,5 +49,9 @@ public class Messages {
 
     public static String scriptRecursion() {
         return "Recursion detected, the script can't be executed.";
+    }
+
+    public static String tryingAgain() {
+        return "Failed to communicate with server. Trying again...\n";
     }
 }
