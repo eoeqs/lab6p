@@ -34,12 +34,11 @@ public class ServerConsole {
                     }
                     case "exit" -> {
                         if (confirmExit()) {
-
                             System.exit(0);
                         }
                     }
                     default -> {
-                        System.out.println("You can only use 'save' and 'exit' in the Server console.");
+                        System.out.println("You can only use 'save' and 'exit' in the Server console.\n");
                         return false;
                     }
                 }
@@ -57,7 +56,7 @@ public class ServerConsole {
             return true;
         } else {
             System.out.println(Messages.failedToSave());
-            System.out.println("Exit anyway? (Enter anything to exit, press Enter without typing anything to cancel)");
+            System.out.println("Exit anyway? (Enter anything to exit, press Enter without typing anything to cancel)\n");
             try {
                 if (!scanner.nextLine().isEmpty()) {
                     return true;

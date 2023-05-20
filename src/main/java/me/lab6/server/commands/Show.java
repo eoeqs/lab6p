@@ -33,7 +33,7 @@ public class Show implements Command {
     public Response execute(Object arg) {
         Collection<Worker> workers = collectionManager.workerMap().values();
         if (workers.size() == 0) {
-            return new Response("This collection is empty.");
+            return new Response("This collection is empty.\n");
         }
         StringBuilder sb = new StringBuilder();
         workers.forEach(w -> sb.append(w).append("\n"));

@@ -52,7 +52,7 @@ public class Validator {
         String commandStr = input[0].toLowerCase();
         int existence = validateCommand(commandStr);
         if (existence == 0) {
-            return "Non-existent command. Please, use 'help' to see information about available commands.";
+            return "Non-existent command. Please, use 'help' to see information about available commands.\n";
         }
         if (existence > 0) {
             Constraints constraints = commandsWithArg.get(commandStr);

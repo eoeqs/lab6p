@@ -18,8 +18,8 @@ import java.util.Arrays;
 
 public class UDPClient {
 
-    private final static int packageSize = 8192;
-    private final static int dataSize = 8191;
+    private final static int packageSize = (int) Math.pow(2, 14);
+    private final static int dataSize = (int) Math.pow(2, 14) - 1;
     private final DatagramChannel client;
     private final InetSocketAddress addr;
 
@@ -36,12 +36,12 @@ public class UDPClient {
             try {
                 return SerializationUtils.deserialize(responseBytes);
             } catch (SerializationException e) {
-                return new Response("The received response is impossible to deserialize.");
+                return new Response("The received response is impossible to deserialize.\n");
             }
         } catch (SerializationException e) {
-            return new Response("This request is impossible to serialize, thus it can't be sent to the server.");
+            return new Response("This request is impossible to serialize, thus it can't be sent to the server.\n");
         } catch (TooBigDataException e) {
-            return new Response("The received response data is too big to deserialize, thus it can't be displayed.");
+            return new Response("The received response data is too big to deserialize, thus it can't be displayed.\n");
         }
     }
 

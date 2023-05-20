@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class ServerMain {
-    private final static int port = 26566;
+    private final static int port = 5928;
 
     public static void main(String[] args) {
         String fileName = System.getenv("workers");
@@ -33,18 +33,18 @@ public class ServerMain {
                     prepareAndStart(fileManager, new HashMap<>());
                 }
             } catch (IOException e) {
-                System.out.println("Can't read the source file. Make sure that the environmental variable 'workers' stores a proper path to an existent file.");
+                System.out.println("Can't read the source file. Make sure that the environmental variable 'workers' stores a proper path to an existent file.\n");
             } catch (SameIDException e) {
-                System.out.println("The source file contains two or more workers with the same ID. ID has to be unique.");
+                System.out.println("The source file contains two or more workers with the same ID. ID has to be unique.\n");
             } catch (JsonParseException e) {
-                System.out.println("Failed to read the source file: content doesn't meet json standards.");
+                System.out.println("Failed to read the source file: content doesn't meet json standards.\n");
             } catch (IncorrectWorkerFieldException e) {
-                System.out.println("The source file's worker representation is incorrect.");
+                System.out.println("The source file's worker representation is incorrect.\n");
             } catch (NullPointerException e) {
                 prepareAndStart(fileManager, new HashMap<>());
             }
         } else {
-            System.out.println("Can't read the source file. Environmental variable 'workers' is null.");
+            System.out.println("Can't read the source file. Environmental variable 'workers' is null.\n");
         }
     }
 
@@ -58,7 +58,7 @@ public class ServerMain {
             UDPServer server = new UDPServer(InetAddress.getLocalHost(), port, commandManager, serverConsole);
             server.run();
         } catch (UnknownHostException | SocketException e) {
-            System.out.println("Failed to launch the server using local host.");
+            System.out.println("Failed to launch the server using local host.\n");
         }
     }
 }

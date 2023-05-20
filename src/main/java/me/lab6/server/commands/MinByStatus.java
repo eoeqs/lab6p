@@ -34,9 +34,9 @@ public class MinByStatus implements Command {
         Status minStatus = Status.minStatus();
         List<Worker> filtered = collectionManager.workerMap().values()
                 .stream().filter(w -> w.getStatus() == minStatus).toList();
-        StringBuilder sb = new StringBuilder("The minimal Status value is ").append(minStatus);
+        StringBuilder sb = new StringBuilder("The minimal Status value is ").append(minStatus).append("\n");
         if (filtered.size() == 0) {
-            sb.append("The collection doesn't contain any elements with the minimal Status value.");
+            sb.append("The collection doesn't contain any elements with the minimal Status value.\n");
         } else {
             filtered.forEach(w -> sb.append(w).append("\n"));
         }

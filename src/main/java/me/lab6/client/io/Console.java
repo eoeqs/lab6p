@@ -57,7 +57,7 @@ public class Console {
                         Worker worker = constructor.constructWorker(Long.parseLong(input[1]));
                         response = tryToProcess(input[0], worker);
                     } catch (NoSuchElementException e) {
-                        System.out.println("Worker description process was canceled.");
+                        System.out.println("Worker description process was canceled.\n");
                     }
                 } else if (input[0].equalsIgnoreCase("filter_greater_than_organization")) {
                     try {

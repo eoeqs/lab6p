@@ -3,7 +3,6 @@ package me.lab6.server.commands;
 
 import me.lab6.common.network.Response;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

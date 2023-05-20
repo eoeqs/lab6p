@@ -22,8 +22,8 @@ import java.util.Arrays;
 
 public class UDPServer {
 
-    private final static int packageSize = 8192;
-    private final static int dataSize = 8191;
+    private final static int packageSize = (int) Math.pow(2, 14);
+    private final static int dataSize = (int) Math.pow(2, 14) - 1;
     private final DatagramSocket socket;
     private final InetSocketAddress address;
     private final CommandManager commandManager;
