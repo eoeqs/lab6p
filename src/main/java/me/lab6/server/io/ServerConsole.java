@@ -17,7 +17,6 @@ public class ServerConsole {
     }
 
     public boolean handleServerInput() {
-
         try {
             if (System.in.available() > 0) {
                 String input = scanner.nextLine().trim();

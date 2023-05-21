@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class ServerMain {
-    private final static int port = 5928;
+    private final static int port = 49320;
 
     public static void main(String[] args) {
         String fileName = System.getenv("workers");

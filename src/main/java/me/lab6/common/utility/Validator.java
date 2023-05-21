@@ -82,16 +82,17 @@ public class Validator {
     }
 
     public static int validateData(String str, Constraints constraints) {
-        if (nullCheck(str, constraints)) {
-            if (!constraints.isNullable()) {
-                if (!typeCheck(str, constraints) || !positiveCheck(str, constraints)) {
-                    return 10;
-                }
+        if (str == null || str.isBlank()) {
+            if (!nullCheck(str, constraints)) {
+                return 5;
             }
             return 0;
         } else {
-            return 5;
+            if (!typeCheck(str, constraints) || !positiveCheck(str, constraints)) {
+                return 10;
+            }
         }
+        return 0;
     }
 
     private static boolean typeCheck(String data, Constraints constraints) {

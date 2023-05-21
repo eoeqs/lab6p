@@ -33,14 +33,12 @@ public class UDPServer {
 
 
     public UDPServer(InetAddress address, int port, CommandManager commandManager, ServerConsole console) throws SocketException {
-
         logger.setLevel(Level.INFO);
         this.address = new InetSocketAddress(address, port);
         this.commandManager = commandManager;
         this.console = console;
         socket = new DatagramSocket(getAddress());
         socket.setReuseAddress(true);
-
     }
 
     public InetSocketAddress getAddress() {
@@ -48,8 +46,6 @@ public class UDPServer {
     }
 
     public Pair<Byte[], SocketAddress> receiveData() throws IOException {
-
-
         boolean received = false;
         byte[] result = new byte[0];
         SocketAddress address = null;
@@ -68,8 +64,8 @@ public class UDPServer {
             if (data[data.length - 1] == 1) {
                 received = true;
                 logger.info("Receiving data from " + packet.getAddress() + " has just ended.");
-
             }
+
             result = Bytes.concat(result, Arrays.copyOf(data, data.length - 1));
         }
         return new ImmutablePair<>(ArrayUtils.toObject(result), address);

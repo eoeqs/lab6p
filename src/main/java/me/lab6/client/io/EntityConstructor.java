@@ -86,7 +86,7 @@ public class EntityConstructor {
         LocalDate startDate = LocalDate.parse(getField(new Constraints(DataType.DATE, false, false,
                 "Enter the worker's start date:",
                 "Start date has to be entered in a proper Local Date format (YYYY-MM-DD)" +
-                        "and be after the current date.",
+                        " and be after the current date (" + LocalDate.now() + ").",
                 "Worker's start date can't be empty.")));
         String prePosition = getField(new Constraints(DataType.POSITION, true, false,
                 "Enter the worker's position:",
